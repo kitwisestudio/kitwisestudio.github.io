@@ -1,0 +1,8 @@
+# Olivo Press
+
+> Olivo Press is an independent publisher of puzzle books and logbooks on Amazon, in English and Spanish: murder mystery logic puzzles, large print word search and gift puzzle books.
+
+## Pages
+- [Olivo Press puzzle books: murder mystery logic puzzles and word search](https://kitwisestudio.github.io/olivo-press/): Independent puzzle books in English and Spanish: Who Did It? murder mystery logic puzzles and Nurse Word Search, on Amazon.
+- [What are murder mystery logic puzzles? Rules and how to solve them](https://kitwisestudio.github.io/olivo-press/murder-mystery-logic-puzzles.html): Murder mystery logic puzzles mix sudoku-style placement with a whodunit. The rules, a solving method and where to find a book of 60.
+- [Nurse Word Search: a large print puzzle gift for nurses](https://kitwisestudio.github.io/olivo-press/nurse-word-search.html): Nurse Word Search has 60 large print puzzles about nursing life: a low-cost gift for nurses, nursing students and new grads.

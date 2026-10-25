@@ -1,0 +1,10 @@
+# CalmShift by KitWise Studio
+
+> CalmShift makes printable and fillable PDF nursing brain sheets, SBAR report sheets and shift organizers for every unit, designed by a working nurse. Sold on Gumroad and Etsy (shop KitWiseStudios).
+
+## Pages
+- [CalmShift nursing brain sheets and report sheets (printable + fillable PDF)](https://kitwisestudio.github.io/calmshift/): Printable and fillable PDF brain sheets, SBAR report sheets and shift organizers for ICU, med-surg, ER, L&D, NICU, peds, psych and new grad nurses.
+- [What is a nurse brain sheet? How to choose one for your unit](https://kitwisestudio.github.io/calmshift/nurse-brain-sheet.html): A nurse brain sheet is a one-page organizer for each patient during a shift. Here is what it should include and which layout fits ICU, med-surg, ER, L&D, NICU, peds and psych.
+- [SBAR nursing report: template, example and free printable](https://kitwisestudio.github.io/calmshift/sbar-report-template.html): SBAR stands for Situation, Background, Assessment, Recommendation. How to use it to call a provider or give handoff, with an example and a free printable sheet.
+- [How new grad nurses stay organized on shift (with printable sheets)](https://kitwisestudio.github.io/calmshift/new-grad-nurse-organization.html): A practical routine for new graduate nurses: what to write before report, an hourly timeline, and the sheets that help.
+- [Hoja de relevo de enfermería en PDF (SBAR, balance hídrico y valoración)](https://kitwisestudio.github.io/calmshift/hoja-relevo-enfermeria.html): Qué debe tener una hoja de relevo de enfermería con método SBAR y un kit en español de 11 hojas rellenables.

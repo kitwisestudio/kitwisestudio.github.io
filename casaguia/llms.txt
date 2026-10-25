@@ -1,0 +1,8 @@
+# CasaGuía
+
+> CasaGuía is an offline Welcome Book Builder for holiday rental hosts: fill one form and get a print-ready guest welcome book in English, Spanish, German and French, plus Wi-Fi QR cards and house rules, check-out and recycling signs. Sold on Etsy (shop KitWiseStudios). Not affiliated with Airbnb, Booking.com or VRBO.
+
+## Pages
+- [CasaGuía: holiday rental welcome book in 4 languages (EN, ES, DE, FR)](https://kitwisestudio.github.io/casaguia/): Offline welcome book builder for Airbnb, Booking.com and VRBO hosts: one form, a print-ready guest book in English, Spanish, German and French, Wi-Fi QR cards and house signs.
+- [What to include in a vacation rental welcome book (checklist)](https://kitwisestudio.github.io/casaguia/what-to-include-in-a-welcome-book.html): A complete checklist for a holiday rental guest welcome book: arrival, Wi-Fi, house rules, appliances, recycling, emergencies, local tips and check-out.
+- [Libro de bienvenida para piso turístico en varios idiomas: qué incluir](https://kitwisestudio.github.io/casaguia/libro-de-bienvenida-piso-turistico.html): Qué debe tener el libro de bienvenida de un piso turístico y cómo hacerlo en español, inglés, alemán y francés a la vez.
