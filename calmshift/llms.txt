@@ -1,6 +1,6 @@
 # CalmShift by KitWise Studio
 
-> CalmShift makes printable and fillable PDF nursing brain sheets, SBAR report sheets and shift organizers for every unit, designed by a working nurse. Sold on Gumroad and Etsy (shop KitWiseStudios).
+> CalmShift makes printable and fillable PDF nursing brain sheets, SBAR report sheets and shift organizers for every unit, made with input from a working nurse. Sold on Gumroad and Etsy (shop KitWiseStudios).
 
 ## Pages
 - [CalmShift nursing brain sheets and report sheets (printable + fillable PDF)](https://kitwisestudio.github.io/calmshift/): Printable and fillable PDF brain sheets, SBAR report sheets and shift organizers for ICU, med-surg, ER, L&D, NICU, peds, psych and new grad nurses.
