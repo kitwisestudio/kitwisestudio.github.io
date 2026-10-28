@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HorasClaras · ¿Debes horas? Calculadora de jornada anual para turnos sanitarios</title>
+<meta name="description" content="Calcula gratis si debes horas o te las deben: cuadrante de turnos, jornada anual (35 h o 37,5 h), noches, festivos y descansos de 12 h. Para enfermería, TCAE y personal sanitario. Sin registro.">
+<meta name="google-site-verification" content="e7XhUHwbEO7WZ174H6a-lsJ0imtzZNkqk6-KqkXk8O0">
+<link rel="canonical" href="https://kitwisestudio.github.io/horas-claras/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="¿Debes horas? Calcúlalo en 2 minutos · HorasClaras">
+<meta property="og:description" content="Calculadora gratuita de jornada anual para personal sanitario a turnos. Sin registro: tus datos se quedan en tu móvil.">
+<meta property="og:url" content="https://kitwisestudio.github.io/horas-claras/">
+<meta property="og:image" content="https://kitwisestudio.github.io/horas-claras/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1f7a63">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"HorasClaras","url":"https://kitwisestudio.github.io/horas-claras/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"es","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Calculadora de jornada anual y saldo de horas para personal sanitario a turnos: cuadrante, noches, festivos y descansos."},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo sé si debo horas en mi jornada anual?","acceptedAnswer":{"@type":"Answer","text":"Suma las horas de todos los turnos del año y las ausencias que computan como trabajadas (permisos, días de libre disposición, bajas) y réstale tu jornada anual. Si el resultado es negativo, debes horas; si es positivo, te las deben. HorasClaras hace la suma automáticamente a partir de tu cuadrante."}},
+{"@type":"Question","name":"¿Qué pasa si mi jornada cambió a 35 horas a mitad de año?","acceptedAnswer":{"@type":"Answer","text":"La jornada anual se prorratea por días: la parte del año anterior al cambio cuenta con la jornada antigua y el resto con la nueva. En HorasClaras activa 'Mi jornada cambió durante el año' e indica la fecha y la nueva jornada."}},
+{"@type":"Question","name":"¿Es oficial el cálculo?","acceptedAnswer":{"@type":"Answer","text":"No. Es una estimación orientativa para que revises tu cuadrante. Cada servicio de salud tiene su propio acuerdo de jornada; el cómputo oficial es el de tu gerencia o tu sindicato."}},
+{"@type":"Question","name":"¿Dónde se guardan mis datos?","acceptedAnswer":{"@type":"Answer","text":"Solo en tu navegador (almacenamiento local). No hay registro ni servidor que reciba tu cuadrante."}}
+]}]}
+</script>
+<script src="config.js"></script>
+<script src="analytics.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./" aria-label="HorasClaras inicio">
+    <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1f7a63"/><circle cx="16" cy="16" r="9" fill="none" stroke="#fff" stroke-width="2.5"/><path d="M16 10v6l4 3" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    HorasClaras
+  </a>
+  <nav class="links"><a href="#calculadora" data-cta="nav">Calculadora</a><a href="#como-funciona" class="hide-sm">Cómo funciona</a><a href="#pro">Pro</a><a href="#faq" class="hide-sm">Preguntas</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <h1>¿Debes horas… <em>o te las deben?</em></h1>
+  <p class="lead">Calcula tu saldo de jornada anual a partir de tu cuadrante de turnos en 2 minutos. Hecho para enfermeras, TCAE y todo el personal sanitario a turnos: noches, 12 h, festivos y el cambio a 35 horas.</p>
+  <a class="btn primary" href="#calculadora" data-cta="hero">Calcular mis horas gratis</a>
+  <div class="pills"><span class="pill">Sin registro</span><span class="pill">Tus datos no salen de tu móvil</span><span class="pill">Aviso de descansos &lt; 12 h</span><span class="pill">Exporta a Google Calendar</span></div>
+</div>
+
+<section id="calculadora"><div class="wrap">
+  <div class="grid-app">
+    <div>
+      <div class="card">
+        <div class="step">Paso 1 · Tu jornada</div>
+        <div class="row">
+          <div><label for="year">Año</label><select id="year"></select></div>
+          <div><label for="preset">Referencia</label><select id="preset"></select></div>
+          <div><label for="target">Jornada anual (horas)</label><input id="target" type="number" min="0" max="3000" step="0.5" inputmode="decimal"></div>
+        </div>
+        <p class="hint" id="presetSrc"></p>
+        <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="chg"> Mi jornada cambió durante el año (p. ej. paso a 35 h)</label>
+        <div class="row" id="chgRow" hidden>
+          <div><label for="chgDate">Desde el día</label><input id="chgDate" type="date"></div>
+          <div><label for="chgTarget">Nueva jornada anual (h)</label><input id="chgTarget" type="number" min="0" max="3000" step="0.5" inputmode="decimal"></div>
+        </div>
+        <details>
+          <summary>Ajustes avanzados (noches, ausencias, tipos de turno)</summary>
+          <div class="row">
+            <div><label for="nightRed">Reducción por cada noche trabajada (h)</label><input id="nightRed" type="number" min="0" max="12" step="0.25" inputmode="decimal"><p class="hint">Algunos acuerdos reducen la jornada según las noches hechas. Déjalo en 0 si el tuyo no lo hace.</p></div>
+            <div><label for="absH">Horas que computa un día de permiso/baja/LD</label><input id="absH" type="number" min="0" max="24" step="0.5" inputmode="decimal"><p class="hint">Las vacaciones suman 0 porque normalmente ya están descontadas de la jornada anual.</p></div>
+          </div>
+          <table class="shifts" aria-label="Tipos de turno"><thead><tr><th>Código</th><th>Nombre</th><th>Inicio</th><th>Fin</th><th>Noche</th><th>h</th></tr></thead><tbody id="shiftRows"></tbody></table>
+        </details>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="step">Paso 2 · Tu cuadrante</div>
+        <p class="hint" style="margin-top:0">Rellena con tu rotación y luego corrige días sueltos tocándolos.</p>
+        <div class="row">
+          <div style="grid-column:span 2"><label for="pattern">Patrón que se repite</label><input id="pattern" placeholder="M M T T N N L L L L" autocomplete="off"></div>
+          <div><label for="pFrom">Desde</label><input id="pFrom" type="date"></div>
+          <div><label for="pTo">Hasta</label><input id="pTo" type="date"></div>
+        </div>
+        <p class="hint">Usa los códigos de tus turnos (M, T, N, D, N12…) y L para libre. Ejemplos: <a href="#" data-pat="M M T T N N L L L L">rotatorio 10 días</a> · <a href="#" data-pat="D N12 L L">12 h día-noche</a> · <a href="#" data-pat="M M M M M L L">mañanas L-V</a></p>
+        <div class="actions"><button class="btn primary small" id="applyPat">Rellenar cuadrante</button><button class="btn ghost small" id="clearAll">Borrar todo</button></div>
+        <div class="step" style="margin-top:16px">Pincel: toca un turno y luego los días</div>
+        <div class="palette" id="palette" role="radiogroup" aria-label="Elegir turno para pintar"></div>
+        <div class="months" id="months"></div>
+        <p class="legend">Borde naranja = festivo nacional (mantén pulsado un día, o clic derecho en ordenador, para marcar un festivo autonómico o local). Borde negro = hoy.</p>
+      </div>
+    </div>
+
+    <aside class="sticky">
+      <div class="card" id="results" aria-live="polite">
+        <div class="step">Paso 3 · Tu saldo</div>
+        <div class="balance-box"><div class="lbl" id="balLbl">Saldo a final de año</div><div class="big" id="bal">—</div><div class="lbl" id="balTxt"></div></div>
+        <div class="kpi"><span>Jornada anual a cumplir</span><strong id="kTarget">—</strong></div>
+        <div class="kpi"><span>Horas en turnos</span><strong id="kWorked">—</strong></div>
+        <div class="kpi"><span>Ausencias que computan</span><strong id="kAbs">—</strong></div>
+        <div class="kpi"><span>Saldo a día de hoy</span><strong id="kToday">—</strong></div>
+        <div class="kpi"><span>Turnos · noches</span><strong id="kShifts">—</strong></div>
+        <div class="kpi"><span>Festivos · domingos trabajados</span><strong id="kHol">—</strong></div>
+        <div class="bars" id="bars" aria-hidden="true"></div>
+        <div class="barlbl"><span>E</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span></div>
+        <p class="hint">Barras: horas por mes. Naranja = por encima de lo que te toca ese mes.</p>
+        <div id="warnBox" hidden><strong class="neg" style="font-size:14px">⚠ Descansos de menos de 12 h</strong><ul class="warns" id="warns"></ul></div>
+        <div class="actions no-print">
+          <button class="btn ghost small" id="exImg">Imagen para compartir</button>
+          <button class="btn ghost small" id="exIcs">Google/Apple Calendar</button>
+          <button class="btn ghost small" id="exPrint">Imprimir / PDF</button>
+          <button class="btn ghost small" id="exBak">Copia de seguridad</button>
+          <label class="btn ghost small" style="margin:0">Restaurar<input type="file" id="imBak" accept="application/json" class="sr"></label>
+        </div>
+        <p class="disclaimer">Estimación orientativa. No es el cómputo oficial: revisa el acuerdo de jornada de tu servicio de salud.</p>
+        <button class="btn primary" style="width:100%;margin-top:10px" data-pro="pdf_report">Informe PDF para reclamar horas <span class="badge" style="background:#fff3;color:#fff">Pro</span></button>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="como-funciona"><div class="wrap">
+  <h2>Por qué casi siempre "debes horas"</h2>
+  <p style="max-width:760px;color:var(--mut)">Con turnos rotatorios, noches de 10 h, festivos y vacaciones, cuadrar la jornada anual de cabeza es imposible. Muchas enfermeras descubren a final de año que deben decenas de horas, o que han regalado otras tantas. En 2026, además, varios servicios de salud han pasado a 35 horas semanales a mitad de año, lo que cambia la cuenta.</p>
+  <div class="steps3" style="margin-top:14px">
+    <div class="card"><div class="num">1</div><h3>Pon tu jornada</h3><p>La cifra anual de tu acuerdo (por ejemplo 1.400 h en rotatorio). Si cambió durante el año, indica desde cuándo.</p></div>
+    <div class="card"><div class="num">2</div><h3>Rellena tu rotación</h3><p>Escribe tu patrón (M M T T N N L L L L) y corrige los días sueltos: vacaciones, cambios, permisos.</p></div>
+    <div class="card"><div class="num">3</div><h3>Mira tu saldo</h3><p>Sabrás cuántas horas debes o te deben hoy y a final de año, y si algún cambio te deja sin tus 12 h de descanso.</p></div>
+  </div>
+</div></section>
+
+<section id="pro"><div class="wrap">
+  <h2>HorasClaras Pro <span class="badge">en desarrollo</span></h2>
+  <p style="color:var(--mut);max-width:760px">La calculadora es y seguirá siendo gratis. Estamos decidiendo qué construir después. Toca lo que más te ayudaría: así sabremos qué hacer primero. <strong>Estas funciones aún no existen</strong> y no cobramos nada por ellas.</p>
+  <div class="feat" id="featGrid"></div>
+</div></section>
+
+<section id="precios"><div class="wrap">
+  <h2>Precios</h2>
+  <div class="prices">
+    <div class="card"><h3>Gratis</h3><div class="price">0 €</div><ul class="check"><li>Cálculo de saldo anual y a hoy</li><li>Cambio de jornada a mitad de año</li><li>Noches, festivos y domingos</li><li>Aviso de descansos &lt; 12 h</li><li>Exportar a calendario e imagen</li></ul><a class="btn ghost" href="#calculadora" data-cta="pricing_free">Usar gratis</a></div>
+    <div class="card" style="border-color:var(--acc)"><h3>Pro <span class="badge">próximamente</span></h3><div class="price">1,99 € <small>/ mes</small></div><p class="hint" style="margin:0">o 14,99 € / año (precio previsto, puede cambiar)</p><ul class="check"><li>Todo lo gratis</li><li>Informe PDF para supervisión</li><li>Pluses de noches y festivos</li><li>Copia en la nube y varios dispositivos</li><li>Cuadrante compartido con tu unidad</li></ul><button class="btn primary" data-pro="pro_plan">Avísame cuando salga</button></div>
+  </div>
+</div></section>
+
+<section id="faq" class="faq"><div class="wrap">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Cómo sé si debo horas?</summary><p>Suma las horas de todos tus turnos del año más las ausencias que computan como trabajadas (permisos, libre disposición, bajas) y réstale tu jornada anual. Negativo: debes horas. Positivo: te las deben. HorasClaras lo hace por ti.</p></details>
+  <details><summary>Mi jornada pasó a 35 horas a mitad de año, ¿cómo se calcula?</summary><p>Se prorratea por días: la parte del año anterior al cambio cuenta con la jornada antigua y el resto con la nueva. Activa "Mi jornada cambió durante el año".</p></details>
+  <details><summary>¿Qué jornada anual pongo?</summary><p>La que fija el acuerdo de tu servicio de salud para tu tipo de turno (diurno, rotatorio o noches). Si no la sabes, pregúntala en tu supervisión o tu sindicato. Incluimos algunas referencias públicas de 2026 con su fuente.</p></details>
+  <details><summary>¿Es oficial?</summary><p>No. Es una estimación para revisar tu cuadrante. No estamos vinculados a ningún servicio de salud.</p></details>
+  <details><summary>¿Guardáis mi cuadrante?</summary><p>No. Se guarda solo en tu navegador. Puedes hacer una copia de seguridad en un archivo y restaurarla en otro dispositivo.</p></details>
+  <details><summary>¿Sirve si no soy sanitario?</summary><p>Sí, sirve para cualquier trabajo a turnos con jornada anual: policía, bomberos, industria, residencias…</p></details>
+</div></section>
+</main>
+
+<footer class="bot"><div class="wrap">
+  HorasClaras es un proyecto de KitWise Studio · <a href="privacidad.html">Privacidad</a> · <a href="aviso-legal.html">Aviso legal</a> · <a href="guias/">Guías</a>
+</div></footer>
+
+<dialog id="dlg"><form method="dialog" class="dlg" id="dlgForm">
+  <h3 id="dlgTitle">Esta función está en desarrollo</h3>
+  <p class="hint" id="dlgText" style="font-size:15px"></p>
+  <p style="font-weight:600;margin:12px 0 2px">¿Cuánto pagarías por HorasClaras Pro?</p>
+  <div class="wtp" id="wtp"><button type="button" data-v="0">Nada, solo gratis</button><button type="button" data-v="1">≈1 € / mes</button><button type="button" data-v="2">≈2 € / mes</button><button type="button" data-v="15y">≈15 € / año</button></div>
+  <label for="wlEmail">Tu email para avisarte (opcional)</label>
+  <input id="wlEmail" type="email" placeholder="tu@email.com" autocomplete="email" maxlength="120">
+  <p class="hint">Solo lo usaremos para avisarte de esta función. Puedes darte de baja cuando quieras. <a href="privacidad.html" target="_blank">Privacidad</a></p>
+  <div class="actions"><button class="btn primary" id="wlSend" value="send">Avisadme</button><button class="btn ghost" value="cancel" formnovalidate>Cerrar</button></div>
+</form></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

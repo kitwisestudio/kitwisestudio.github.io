@@ -25,3 +25,4 @@ Sitemap: https://kitwisestudio.github.io/eir-facil/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/casaguia/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/fiestas/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/money/sitemap.xml
+Sitemap: https://kitwisestudio.github.io/horas-claras/sitemap.xml
