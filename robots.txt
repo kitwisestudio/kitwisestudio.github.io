@@ -24,3 +24,4 @@ Sitemap: https://kitwisestudio.github.io/olivo-press/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/eir-facil/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/casaguia/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/fiestas/sitemap.xml
+Sitemap: https://kitwisestudio.github.io/money/sitemap.xml
