@@ -28,3 +28,4 @@ Sitemap: https://kitwisestudio.github.io/money/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/horas-claras/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/casenote-lab/sitemap.xml
 Sitemap: https://kitwisestudio.github.io/ready72/sitemap.xml
+Sitemap: https://kitwisestudio.github.io/yearcard/sitemap.xml
