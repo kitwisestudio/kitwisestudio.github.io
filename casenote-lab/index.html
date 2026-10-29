@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CaseNote Lab: OET Writing practice for nurses</title>
+<meta name="description" content="Practise OET Writing letters for nurses with original case notes and an instant checker for purpose, content, conciseness, style, layout and language.">
+<link rel="canonical" href="https://kitwisestudio.github.io/casenote-lab/"><meta property="og:title" content="CaseNote Lab: OET Writing practice for nurses"><meta property="og:description" content="Write OET-style nursing letters and see which key notes you used, missed or did not need."><meta property="og:type" content="website"><meta property="og:url" content="https://kitwisestudio.github.io/casenote-lab/"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "CaseNote Lab", "url": "https://kitwisestudio.github.io/casenote-lab/", "applicationCategory": "EducationalApplication", "operatingSystem": "Any (web browser)", "description": "OET Writing practice for nurses with original case notes and an automatic letter checker.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script><script defer src="https://cloud.umami.is/script.js" data-website-id="a7687a91-bfb8-4a81-9db0-82ff7e8f3a2b"></script>
+<style>
+:root{
+  --bg:#f6f5f1; --paper:#ffffff; --ink:#1d2329; --muted:#5d6670; --line:#dcd9d1; --soft:#eeece6;
+  --brand:#0f5f63; --brand-ink:#ffffff; --brand-soft:#e2efee;
+  --ok:#2c7a3f; --ok-soft:#e5f2e8; --warn:#9a6200; --warn-soft:#fbf0dc; --bad:#b3261e; --bad-soft:#fbe6e4; --info:#3c5a8a; --info-soft:#e7edf7;
+  --radius:10px; --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15191c; --paper:#1d2226; --ink:#e7e9ea; --muted:#9aa4ad; --line:#333b42; --soft:#252b30;
+    --brand:#5fb3b0; --brand-ink:#0d1b1c; --brand-soft:#1f3434;
+    --ok:#7cc48c; --ok-soft:#1d2e22; --warn:#e3b35c; --warn-soft:#33291a; --bad:#f08a80; --bad-soft:#3a201e; --info:#94b2e4; --info-soft:#1f2836;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--brand)}
+button{font:inherit}
+header.top{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.bar{display:flex;align-items:center;gap:18px;height:56px}
+.logo{display:flex;align-items:center;gap:9px;white-space:nowrap;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo svg{flex:none}
+nav.main{display:flex;gap:4px;margin-left:auto;overflow-x:auto}
+nav.main a{padding:7px 11px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.93rem;white-space:nowrap}
+nav.main a.on,nav.main a:hover{background:var(--soft);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 15px;border-radius:8px;cursor:pointer;text-decoration:none;font-size:.95rem}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-ink);font-weight:600}
+.btn.small{padding:6px 11px;font-size:.88rem}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+main{padding:28px 0 60px}
+h1,h2,h3{line-height:1.25;letter-spacing:-.01em}
+h1{font-size:2rem;margin:.2em 0 .4em}
+h2{font-size:1.35rem;margin:1.6em 0 .6em}
+.lead{font-size:1.12rem;color:var(--muted);max-width:720px}
+.muted{color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.pill{display:inline-block;font-size:.76rem;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--muted);margin-right:4px;text-transform:capitalize}
+.pill.easy{background:var(--ok-soft);color:var(--ok)} .pill.medium{background:var(--warn-soft);color:var(--warn)} .pill.hard{background:var(--bad-soft);color:var(--bad)}
+.casecard{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:border-color .15s}
+.casecard:hover{border-color:var(--brand)}
+.casecard h3{margin:0;font-size:1.02rem}
+.casecard .meta{font-size:.85rem;color:var(--muted)}
+.lock{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.score{font-size:.82rem;color:var(--ok)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding:16px 0 8px}
+.hero .demo{font-family:var(--serif);font-size:.92rem}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:22px}
+.feat .card h3{margin:.1em 0 .3em;font-size:1rem}
+.feat .card p{margin:0;color:var(--muted);font-size:.93rem}
+/* case view */
+.casehead{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.casehead h1{font-size:1.5rem;margin:0}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.notes{font-size:.93rem}
+.notes .task{background:var(--brand-soft);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:.92rem}
+.notes h4{margin:14px 0 4px;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.notes ul{margin:0;padding-left:0;list-style:none}
+.notes li{padding:3px 8px 3px 10px;border-left:3px solid transparent;border-radius:3px;margin:1px 0}
+.notes li.hit-key{border-left-color:var(--ok);background:var(--ok-soft)}
+.notes li.miss-key{border-left-color:var(--bad);background:var(--bad-soft)}
+.notes li.hit-irr{border-left-color:var(--bad);background:var(--bad-soft);text-decoration:line-through;text-decoration-color:var(--bad)}
+.notes li.hit-sup{border-left-color:var(--warn);background:var(--warn-soft)}
+.notes li .tag{font-size:.72rem;font-weight:600;margin-left:6px;text-transform:uppercase}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.8rem;color:var(--muted);margin-top:10px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.legend .k::before{background:var(--ok)} .legend .m::before{background:var(--bad-soft);border:2px solid var(--bad)} .legend .s::before{background:var(--warn)} .legend .i::before{background:var(--bad)}
+.sticky{position:sticky;top:72px}
+@media (max-width:900px){.sticky{position:static}}
+textarea.letter{width:100%;min-height:520px;resize:vertical;font-family:var(--serif);font-size:1rem;line-height:1.6;padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+textarea.letter:focus{outline:2px solid var(--brand);outline-offset:-1px}
+textarea.letter[readonly]{background:var(--soft)}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.wc{margin-left:auto;font-size:.88rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.wc b.ok{color:var(--ok)} .wc b.warn{color:var(--warn)} .wc b.bad{color:var(--bad)}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;padding:5px 10px;border-radius:8px;background:var(--soft)}
+.timer.reading{background:var(--info-soft);color:var(--info)} .timer.low{background:var(--bad-soft);color:var(--bad)}
+.tabs{display:none;gap:6px;margin-bottom:10px}
+@media (max-width:900px){.tabs{display:flex}.split.mobile-letter .notes-col{display:none}.split.mobile-notes .letter-col{display:none}}
+.tabs button{flex:1;padding:9px;border:1px solid var(--line);background:var(--paper);border-radius:8px;color:var(--ink)}
+.tabs button.on{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+/* report */
+.report{margin-top:16px}
+.summary{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 13px;min-width:110px}
+.stat b{display:block;font-size:1.3rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.78rem;color:var(--muted)}
+.crit{border:1px solid var(--line);border-radius:8px;background:var(--paper);margin-bottom:8px;overflow:hidden}
+.crit summary{cursor:pointer;padding:10px 14px;font-weight:600;display:flex;align-items:center;gap:8px;list-style:none}
+.crit summary::-webkit-details-marker{display:none}
+.crit summary .dot{width:10px;height:10px;border-radius:50%}
+.crit .items{padding:0 14px 10px}
+.it{display:flex;gap:9px;padding:7px 0;border-top:1px solid var(--soft);font-size:.92rem}
+.it .ic{flex:none;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;margin-top:2px}
+.it.ok .ic{background:var(--ok)} .it.warn .ic{background:var(--warn)} .it.bad .ic{background:var(--bad)} .it.info .ic{background:var(--info)}
+.it .d{color:var(--muted);font-size:.86rem;margin-top:2px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)} .dot.info{background:var(--info)}
+.model{font-family:var(--serif);white-space:pre-wrap;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px;font-size:.98rem}
+.teach{margin:10px 0 0;padding-left:20px}
+.teach li{margin:4px 0}
+.notice{background:var(--info-soft);color:var(--ink);border-radius:8px;padding:12px 14px;font-size:.9rem;margin:12px 0}
+.buybox{background:var(--paper);border:2px solid var(--brand);border-radius:12px;padding:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin:22px 0}
+.buybox h3{margin:0 0 4px}
+.buybox p{margin:0;color:var(--muted)}
+.price{font-size:1.6rem;font-weight:700}
+.phr h3{margin:18px 0 6px;font-size:1.02rem}
+.phr ul{margin:0;padding-left:18px}
+.phr li{margin:4px 0;font-family:var(--serif)}
+.phr .copy{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px}
+.filters button{border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:5px 12px;font-size:.86rem;cursor:pointer;color:var(--ink)}
+.filters button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:.85rem}
+.selfcheck label{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-size:.92rem}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:8px;font-size:.9rem;z-index:50}
+.prog td,.prog th{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:.9rem}
+.prog{border-collapse:collapse;width:100%}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <a class="logo" href="#/"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="2" width="17" height="22" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 8h9M7 12h9M7 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19.5" cy="18.5" r="4.5" fill="var(--brand)"/><path d="M17.4 18.6l1.4 1.4 2.6-2.8" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>CaseNote Lab</a>
+  <nav class="main" id="nav">
+    <a href="#/cases">Cases</a><a href="#/checker">Letter checker</a><a href="#/phrases">Phrase bank</a><a href="#/progress">Progress</a><a href="#/guide">How it works</a>
+  </nav>
+</div></header>
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">
+  CaseNote Lab · practice letters for the OET Writing sub-test (Nursing). Made with input from a working nurse.<br>
+  OET is a registered trademark of Cambridge Boxhill Language Assessment. CaseNote Lab is independent and is not affiliated with or endorsed by OET or Cambridge Boxhill. All cases are original and fictional. The automatic checker gives practice feedback only; it does not predict an official score.
+  <br><br>Guides: <a href="https://kitwisestudio.github.io/casenote-lab/oet-writing-sample-nursing/">OET Writing sample for nurses</a> · <a href="https://kitwisestudio.github.io/casenote-lab/oet-case-notes-for-nurses/">OET case notes with answers</a> · <a href="https://kitwisestudio.github.io/casenote-lab/oet-letter-format/">OET letter format</a> · <a href="https://kitwisestudio.github.io/casenote-lab/oet-writing-checker/">Free OET Writing checker</a>
+</div></footer>
+<script>// CaseNote Lab letter checker. Rule-based, runs fully in the browser.
+// Exposes checkLetter(text, task|null) -> report.
+(function (root) {
+  'use strict';
+
+  const CONTRACTIONS = /\b(i'm|i've|i'd|i'll|don't|doesn't|didn't|can't|couldn't|won't|wouldn't|shouldn't|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|it's|he's|she's|they're|we're|you're|there's|that's|let's|he'd|she'd|they've|we've|we'll|she'll|he'll|they'll)\b/gi;
+
+  const INFORMAL = [
+    ['kids', 'children'], ['a lot of', 'considerable / significant'], ['lots of', 'several / significant'],
+    ['got better', 'improved'], ['got worse', 'deteriorated'], ['pretty', '(remove)'], ['really', '(remove)'],
+    ['okay', 'satisfactory / stable'], ['ok ', 'satisfactory / stable'], ['thanks', 'thank you'], ['stuff', '(be specific)'],
+    ['huge', 'significant'], ['anyway', '(remove)'], ['gonna', 'will'], ['wanna', 'wish to'], ['basically', '(remove)'],
+    ['totally', '(remove)'], ['nice', '(be specific)'], ['a bit', 'slightly'], ['get in touch', 'contact'],
+    ['check up on', 'review / monitor'], ['sort out', 'arrange / resolve'], ['find out', 'establish / determine'],
+    ['keep an eye on', 'monitor'], ['hope you are well', '(not needed between professionals)'],
+    ['i hope this letter finds you well', '(not needed between professionals)'],
+    ['as you know', '(avoid: may sound patronising)'], ['please make sure', 'I would be grateful if you could'],
+    ['you must', 'it would be appreciated if you could'], ['don\'t hesitate', 'please do not hesitate'],
+  ];
+
+  const ABBREVIATIONS = ['bd', 'b.d.', 'tds', 't.d.s.', 'qid', 'q.i.d.', 'prn', 'nkda', 'sob', 'd/c', 'hx', 'pt', 'pts', 'c/o', 'o/e',
+    'w/', 'w/o', 'yo', 'y/o', 'yrs', 'mths', 'wks', 'hrs', 'pmhx', 'dx', 'tx', 'rx', 'sx', 'fhx', 'nbm', 'npo', 'adls', 'adl', 'abx', 'iv abx',
+    'od', 'mane', 'nocte', 'stat', 'obs', 'ivi', 'ivf', 'nok', 'mobs', 'mob', 'wt', 'ht', 'temp', 'resps', 'sats', 'gp f/u', 'f/u', 'imp', 'mgmt', 'approx'];
+  const SYMBOLS = /(\+\+|↑|↓|→|←|&|@|\b\d+\s*\/\s*7\b|\bx\s*\d+\s*\/\s*7)/g;
+
+  const L1_ERRORS = [
+    [/\bexplain(ed|s)? (me|him|her|them|us)\b/i, 'explain to me/him/her'],
+    [/\bsince (\d+|two|three|four|five|six|seven|several|a few) (days|weeks|months|years)\b/i, 'for 3 days (or "since 3 March")'],
+    [/\bdepend(s|ed|ing)? of\b/i, 'depend on'],
+    [/\bdiscuss(ed|es|ing)? about\b/i, 'discuss (no "about")'],
+    [/\badvice (him|her|them|the patient)\b/i, 'advise him/her (verb = advise, noun = advice)'],
+    [/\binformations\b/i, 'information (uncountable)'],
+    [/\bequipments\b/i, 'equipment (uncountable)'],
+    [/\bfurnitures\b/i, 'furniture (uncountable)'],
+    [/\b(is|was) agreed\b/i, 'agrees / agreed'],
+    [/\bmake (a |an )?surgery\b/i, 'undergo surgery / have an operation'],
+    [/\bhas (\d+|[a-z]+) years( old)?\b/i, 'is 72 (years old)'],
+    [/\bcommunicat(e|ed) (him|her|them)\b/i, 'inform him/her'],
+    [/\bassist(ed)? to\b/i, 'attend (a clinic) / help to'],
+    [/\bactual(ly)? (medication|treatment|condition)\b/i, 'current (actual = real)'],
+    [/\bin the actuality\b/i, 'currently'],
+    [/\bconsult(ed)? with the doctor about\b/i, '(fine, but "discussed with" is often clearer)'],
+    [/\bthe (mr|mrs|ms|miss)\b/i, 'Mr / Mrs (no article)'],
+    [/\b(he|she) (have|do|go|take|need)\b/i, 'he/she has/does/goes/takes/needs'],
+    [/\bdischarged to home\b/i, 'discharged home'],
+    [/\bdoctor of (family|head)\b/i, 'family doctor / GP'],
+  ];
+
+  const US_UK = [
+    ['organize', 'organise'], ['organized', 'organised'], ['hospitalized', 'hospitalised'], ['hospitalization', 'hospitalisation'],
+    ['mobilize', 'mobilise'], ['mobilized', 'mobilised'], ['stabilized', 'stabilised'], ['color', 'colour'], ['center', 'centre'],
+    ['anemia', 'anaemia'], ['edema', 'oedema'], ['pediatric', 'paediatric'], ['diarrhea', 'diarrhoea'], ['esophag', 'oesophag'],
+    ['estrogen', 'oestrogen'], ['hemoglobin', 'haemoglobin'], ['behavior', 'behaviour'], ['program ', 'programme '],
+    ['catheterized', 'catheterised'], ['recognize', 'recognise'], ['analyze', 'analyse'], ['fiber', 'fibre'], ['tumor', 'tumour'],
+    ['ischemi', 'ischaemi'], ['gynecolog', 'gynaecolog'], ['orthopedic', 'orthopaedic'], ['feces', 'faeces'], ['labor ', 'labour '],
+  ];
+
+  const PURPOSE_OPENERS = /\b(i am writing|i'm writing|i write|i would like to (refer|inform|request|update)|i wish to (refer|inform)|this letter is|the purpose of this letter|thank you for (seeing|reviewing|accepting)|i am referring|please (accept|find|review|assess)|writing to (refer|inform|request|update|advise|follow)|being (discharged|transferred|referred)|for your (review|assessment|ongoing|continued|follow))/i;
+  const PURPOSE_VERBS = /\b(refer|referral|discharg|transfer|review|assess|continu|follow[- ]?up|manag|monitor|inform|update|request|ongoing|care)\w*/i;
+
+  const VERB_HINT = /\b(thank|please|is|are|was|were|be|been|being|has|have|had|will|would|should|could|can|may|might|must|shall|do|does|did|requires?|needs?|lives?|lived|presented|underwent|received|reports?|reported|developed|remains?|continues?|takes?|took|attends?|started|commenced|became|became|felt|appears?|seems?|includes?|recommend\w*|advised|discharged|admitted|treated|managed|prescribed|increased|decreased|improved|resolved|lives|walks?|eats?|drinks?|tolerat\w+|experienc\w+|demonstrat\w+|request\w*|ask\w*|refer\w*|arrang\w*|show\w*|suffer\w*|complain\w*)\b/i;
+
+  function norm(s) {
+    return ' ' + s.toLowerCase().replace(/[’‘`]/g, "'").replace(/[–—]/g, '-').replace(/\s+/g, ' ') + ' ';
+  }
+
+  function splitLetter(raw) {
+    const text = raw.replace(/\r/g, '');
+    const lines = text.split('\n');
+    let salIdx = -1, reIdx = -1, closeIdx = -1;
+    for (let i = 0; i < lines.length; i++) {
+      const l = lines[i].trim();
+      if (salIdx < 0 && /^dear\b/i.test(l)) salIdx = i;
+      if (reIdx < 0 && /^(re|subject|ref)\s*:/i.test(l)) reIdx = i;
+      if (/^(yours\s+(sincerely|faithfully|truly)|kind regards|best regards|regards|sincerely|best wishes|warm regards)\b/i.test(l)) closeIdx = i;
+    }
+    const start = Math.max(salIdx, reIdx) + 1;
+    const end = closeIdx >= 0 ? closeIdx : lines.length;
+    const bodyLines = lines.slice(start > 0 ? start : 0, end);
+    const body = bodyLines.join('\n').trim();
+    const paragraphs = body.split(/\n\s*\n/.test(body) ? /\n\s*\n/ : /\n/).map(p => p.trim()).filter(Boolean);
+    return {
+      lines, salutation: salIdx >= 0 ? lines[salIdx].trim() : '', reLine: reIdx >= 0 ? lines[reIdx].trim() : '',
+      closing: closeIdx >= 0 ? lines[closeIdx].trim() : '', salIdx, reIdx, closeIdx,
+      header: lines.slice(0, salIdx >= 0 ? salIdx : 0).join('\n'),
+      signature: closeIdx >= 0 ? lines.slice(closeIdx + 1).join('\n').trim() : '',
+      body, paragraphs,
+    };
+  }
+
+  function words(s) { return (s.match(/[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9'’\-/.]*/g) || []); }
+  function sentences(s) {
+    return s.replace(/\n+/g, ' ').split(/(?<=[.!?])\s+(?=[A-Z0-9"(])/).map(x => x.trim()).filter(Boolean);
+  }
+
+  function groupHit(textN, groups) {
+    if (!groups || !groups.length) return false;
+    return groups.every(g => g.some(alt => textN.includes(alt.toLowerCase())));
+  }
+
+  function item(level, msg, detail) { return { level, msg, detail: detail || '' }; } // level: ok | warn | bad | info
+
+  function checkLetter(raw, task) {
+    const res = { criteria: {}, stats: {}, notes: null };
+    const C = (k) => (res.criteria[k] = res.criteria[k] || []);
+    const P = splitLetter(raw || '');
+    const body = P.body;
+    const bodyN = norm(body);
+    const allN = norm(raw || '');
+    const wc = words(body).length;
+    const sents = sentences(body);
+    res.stats = { words: wc, sentences: sents.length, paragraphs: P.paragraphs.length,
+      avgSentence: sents.length ? Math.round(wc / sents.length) : 0 };
+
+    if (wc < 20) {
+      C('Organisation & Layout').push(item('bad', 'Write your letter first.', 'Paste or type a full letter (address, date, "Dear…", body, "Yours sincerely").'));
+      res.empty = true;
+      return res;
+    }
+
+    // ---------- Purpose ----------
+    const first = P.paragraphs[0] || '';
+    const firstSent = sentences(first)[0] || '';
+    if (PURPOSE_OPENERS.test(firstSent) || (PURPOSE_VERBS.test(firstSent) && /\b(i|we)\b/i.test(firstSent))) {
+      C('Purpose').push(item('ok', 'Your first sentence states why you are writing.'));
+    } else {
+      C('Purpose').push(item('bad', 'The purpose is not clear in your first sentence.',
+        'The reader should know why you are writing immediately, e.g. "I am writing to refer Mr Bell, who requires daily wound care following his discharge today."'));
+    }
+    if (task && task.purpose_keywords && task.purpose_keywords.length) {
+      const openN = norm(sentences(first).slice(0, 2).join(' '));
+      if (groupHit(openN, task.purpose_keywords)) C('Purpose').push(item('ok', 'The opening names what the reader needs to do for this patient.'));
+      else C('Purpose').push(item('warn', 'Make the request more specific in the opening.',
+        'Say exactly what you want the reader to do (e.g. review, monitor, continue dressings) in the first two sentences.'));
+    }
+    if (/\b(i would be grateful|i would appreciate|please|could you|kindly|i would like you to|would be appreciated|would be (beneficial|helpful|welcome)|would value|requires? (your|ongoing|regular|further|continued)|for (your|ongoing|continued|further|regular|community|specialist) (review|assessment|support|input|advice|management|care|follow|monitoring)|for (review|assessment|follow-up|ongoing)|should (be|continue|receive|have)|(is|are) due|writing to (request|refer)|refer\w* (him|her|mr|mrs|ms|miss|master|this)\b[^.]{0,120}\bfor)\b/i.test(body)) {
+      C('Purpose').push(item('ok', 'You make a polite request to the reader.'));
+    } else {
+      C('Purpose').push(item('warn', 'There is no clear request to the reader.',
+        'Expand the purpose with a request, e.g. "I would be grateful if you could monitor her blood glucose levels."'));
+    }
+
+    // ---------- Content (task mode) ----------
+    if (task && task.case_notes) {
+      const out = { key: [], keyMissed: [], supporting: [], irrelevant: [] };
+      task.case_notes.forEach(sec => sec.notes.forEach(n => {
+        const hit = groupHit(bodyN, n.keywords);
+        const rec = { id: n.id, text: n.text, section: sec.section, hit };
+        if (n.relevance === 'key') (hit ? out.key : out.keyMissed).push(rec);
+        else if (n.relevance === 'supporting' && hit) out.supporting.push(rec);
+        else if (n.relevance === 'irrelevant' && hit) out.irrelevant.push(rec);
+      }));
+      res.notes = out;
+      const totalKey = out.key.length + out.keyMissed.length;
+      const pct = totalKey ? Math.round(100 * out.key.length / totalKey) : 100;
+      res.stats.keyCoverage = pct;
+      if (!out.keyMissed.length) C('Content').push(item('ok', `All ${totalKey} key notes appear in your letter.`));
+      else C('Content').push(item(pct >= 75 ? 'warn' : 'bad', `${out.keyMissed.length} of ${totalKey} key notes seem to be missing.`,
+        'Missing: ' + out.keyMissed.map(n => '“' + n.text + '”').join(' · ')));
+      if (out.irrelevant.length) C('Conciseness & Clarity').push(item('bad', `You included ${out.irrelevant.length} detail(s) this reader does not need.`,
+        out.irrelevant.map(n => '“' + n.text + '”').join(' · ')));
+      else C('Conciseness & Clarity').push(item('ok', 'No irrelevant case notes detected.'));
+      if (out.supporting.length > 6) C('Conciseness & Clarity').push(item('warn', `You used ${out.supporting.length} optional notes.`,
+        'Optional notes are fine in small numbers, but too many make the letter long. Keep only those that help the reader act.'));
+      res.stats.irrelevant = out.irrelevant.length;
+    } else {
+      C('Content').push(item('info', 'Content is checked against the case notes only in task mode.',
+        'Open one of the practice cases to see which key notes you included or missed.'));
+    }
+
+    // ---------- Conciseness & Clarity ----------
+    if (wc < 160) C('Conciseness & Clarity').push(item('warn', `The body has ${wc} words, which is short.`, 'The guide is about 180–200 words. Check that no key information is missing.'));
+    else if (wc > 230) C('Conciseness & Clarity').push(item('bad', `The body has ${wc} words, which is long.`, 'The guide is about 180–200 words. Long letters usually include details the reader does not need.'));
+    else if (wc > 210) C('Conciseness & Clarity').push(item('warn', `The body has ${wc} words, slightly over the guide.`, 'This is acceptable if every sentence is relevant. Try combining related notes.'));
+    else C('Conciseness & Clarity').push(item('ok', `The body has ${wc} words, close to the 180–200 guide.`));
+    const longS = sents.filter(s => words(s).length > 40);
+    if (longS.length) C('Conciseness & Clarity').push(item('warn', `${longS.length} sentence(s) are over 40 words.`, longS.map(s => '“' + s.slice(0, 90) + '…”').join(' · ')));
+
+    // ---------- Genre & Style ----------
+    const contr = (raw.replace(/[’]/g, "'").match(CONTRACTIONS) || []);
+    if (contr.length) C('Genre & Style').push(item('bad', 'Avoid contractions in a formal letter.', 'Found: ' + [...new Set(contr.map(c => c.toLowerCase()))].join(', ') + ' (write "I am", "does not"…)'));
+    const inf = INFORMAL.filter(([w]) => bodyN.includes(' ' + w.toLowerCase()) || bodyN.includes(w.toLowerCase() + ' '));
+    if (inf.length) C('Genre & Style').push(item('warn', 'Some words are too informal or may sound wrong to a colleague.', inf.map(([w, r]) => `“${w.trim()}” → ${r}`).join(' · ')));
+    const abbr = ABBREVIATIONS.filter(a => new RegExp('(^|[\\s(,;])' + a.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&') + '(?=[\\s.,;:)]|$)', 'i').test(body));
+    const sym = body.match(SYMBOLS) || [];
+    if (abbr.length || sym.length) C('Genre & Style').push(item('bad', 'Note-style abbreviations or symbols found.',
+      'Write them in full for the reader: ' + [...new Set(abbr.concat(sym))].join(', ') + '. (Common, clear ones such as BP, GP or IV are fine.)'));
+    if (/!/.test(body)) C('Genre & Style').push(item('warn', 'Avoid exclamation marks in a professional letter.'));
+    if (task && task.patient) {
+      const fn = (task.patient.replace(/^(mr|mrs|ms|miss|master|baby|dr)\.?\s+/i, '').split(/[ ,]/)[0] || '').toLowerCase();
+      if (fn && fn.length > 2 && new RegExp('(^|[^a-z])' + fn + '[^a-z]', 'i').test(body.replace(task.patient, '')) &&
+        !/^(baby|master)/i.test(task.patient) && !/\b(months?|weeks?|days?)\b/i.test(task.patient) &&
+        !((task.patient.match(/,\s*(\d+)/) || [0, 99])[1] < 18)) {
+        C('Genre & Style').push(item('warn', 'You may be using the patient\'s first name.', 'For adults, use title and surname (e.g. "Mr Bell"), not the first name.'));
+      }
+    }
+    if (!res.criteria['Genre & Style']) C('Genre & Style').push(item('ok', 'Register looks formal: no contractions, slang or note-style abbreviations found.'));
+
+    // note form detection
+    const noteLike = [];
+    body.split('\n').forEach(l => {
+      const t = l.trim();
+      if (!t) return;
+      if (/^[-•*·–]\s|^\d+[.)]\s/.test(t)) noteLike.push(t);
+      else if (t.length < 70 && !/[.!?:]$/.test(t)) noteLike.push(t);
+    });
+    sents.forEach(s => { if (words(s).length >= 3 && !VERB_HINT.test(s) && !/\b\w+(ed|s|ing)\b|'s\b/.test(s)) noteLike.push(s); });
+    if (noteLike.length) C('Genre & Style').push(item('bad', 'Some lines look like notes, not full sentences.',
+      [...new Set(noteLike)].slice(0, 4).map(s => '“' + s.slice(0, 80) + '”').join(' · ') + ' — expand them into complete sentences.'));
+
+    // ---------- Organisation & Layout ----------
+    const O = C('Organisation & Layout');
+    if (!P.salutation) O.push(item('bad', 'No salutation found.', 'Start the letter with "Dear Ms Smith," (or "Dear Sir/Madam," if no name is given).'));
+    if (!P.closing) O.push(item('bad', 'No closing found.', 'End with "Yours sincerely," (or "Yours faithfully," after "Dear Sir/Madam"), then your name and role.'));
+    if (P.salutation && P.closing) {
+      const named = /^dear\s+(mr|mrs|ms|miss|dr|doctor|professor|prof)\b/i.test(P.salutation);
+      const sirMadam = /^dear\s+(sir|madam|sir\s*\/\s*madam|sir or madam)/i.test(P.salutation);
+      if (named && /faithfully/i.test(P.closing)) O.push(item('bad', 'Salutation and closing do not match.', 'After "Dear Ms Smith", use "Yours sincerely".'));
+      else if (sirMadam && /sincerely/i.test(P.closing)) O.push(item('bad', 'Salutation and closing do not match.', 'After "Dear Sir/Madam", use "Yours faithfully".'));
+      else if (/regards|best wishes|truly/i.test(P.closing)) O.push(item('warn', 'Use "Yours sincerely" or "Yours faithfully" for a formal letter.'));
+      else O.push(item('ok', 'Salutation and closing are formal and match.'));
+      if (/^dear\s+(doctor|nurse|colleague)\s*,?$/i.test(P.salutation)) O.push(item('warn', 'Use the reader\'s name if the task gives it.', 'e.g. "Dear Dr Patel," not "Dear Doctor,".'));
+      if (/^dear\s+(mr|mrs|ms|miss|dr)\s+[a-z]+\s+[a-z]+/i.test(P.salutation)) O.push(item('warn', 'Use title + surname only in the salutation.', 'e.g. "Dear Ms Doe," not "Dear Ms Jane Doe,".'));
+    }
+    if (!P.reLine) O.push(item('warn', 'Add a "Re:" line with the patient\'s name.', 'e.g. "Re: Mr Arthur Bell, DOB 03/02/1954". It tells the reader at once who the letter is about.'));
+    if (!/\b(\d{1,2}(st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4}|\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4})/i.test(P.header + '\n' + (P.reLine || '')))
+      O.push(item('warn', 'No date found above the salutation.', 'Write the date in full, e.g. "14 March 2026".'));
+    if (P.header.trim().split('\n').filter(Boolean).length < 2) O.push(item('warn', 'The recipient\'s name and address seem to be missing.', 'Write the reader\'s name, role and address at the top left.'));
+    if (P.signature.split('\n').filter(Boolean).length < 1) O.push(item('warn', 'Add your name and role after the closing.'));
+    const np = P.paragraphs.length;
+    if (np < 3) O.push(item('bad', `The body has ${np} paragraph(s).`, 'Use 3–5 paragraphs: purpose · background/condition · treatment and progress · requests/follow-up.'));
+    else if (np > 6) O.push(item('warn', `The body has ${np} paragraphs, which may be too fragmented.`, 'Group related information together (3–5 paragraphs).'));
+    else O.push(item('ok', `${np} paragraphs in the body: good structure.`));
+    const bigP = P.paragraphs.filter(p => words(p).length > 90);
+    if (bigP.length) O.push(item('warn', 'One paragraph is very long.', 'Split it by topic so the reader can find information quickly.'));
+    const lastP = (P.paragraphs[P.paragraphs.length - 1] || '');
+    if (!/\b(contact|questions|further information|do not hesitate|grateful|thank you|appreciate)\b/i.test(lastP))
+      O.push(item('info', 'Consider a short final line.', 'e.g. "Please do not hesitate to contact me if you require further information."'));
+
+    // ---------- Language ----------
+    const Lg = C('Language');
+    const l1 = L1_ERRORS.filter(([re]) => re.test(body)).map(([re, fix]) => { const m = body.match(re); return `“${m[0]}” → ${fix}`; });
+    if (l1.length) Lg.push(item('bad', 'Possible grammar errors common in non-native writers.', l1.join(' · ')));
+    const rep = body.match(/\b(\w+)\s+\1\b/gi);
+    if (rep) Lg.push(item('warn', 'Repeated word.', rep.join(', ')));
+    const lowerStart = sents.filter(s => /^[a-z]/.test(s));
+    if (lowerStart.length) Lg.push(item('warn', 'Sentence starts without a capital letter.', lowerStart.slice(0, 3).map(s => '“' + s.slice(0, 50) + '…”').join(' · ')));
+    if (/(^|\s)i(\s|')/.test(body)) Lg.push(item('warn', 'Write "I" with a capital letter.'));
+    if (/ {2,}/.test(body) || /\s[,.;:]/.test(body)) Lg.push(item('info', 'Check spacing around punctuation (no space before , . ; :).'));
+    const us = US_UK.filter(([u]) => new RegExp('\\b' + u.trim() + (/(e|o)r$/.test(u.trim()) ? '\\b' : ''), 'i').test(raw)).map(([u, b]) => `${u.trim()} / ${b.trim()}`);
+    const ukUsed = US_UK.some(([, b]) => new RegExp('\\b' + b.trim(), 'i').test(raw));
+    if (us.length && ukUsed) Lg.push(item('warn', 'You mix US and UK spelling.', 'Both are accepted, but be consistent: ' + us.join(', ')));
+    else if (us.length) Lg.push(item('info', 'US spelling detected.', 'That is accepted. Just keep it consistent: ' + us.join(', ')));
+    if (!l1.length && !rep && !lowerStart.length) Lg.push(item('ok', 'No common grammar or punctuation slips found by the automatic check.',
+      'The checker cannot judge all grammar. Read your letter once more for articles (a/the) and verb tenses.'));
+
+    // ---------- summary ----------
+    const order = ['Purpose', 'Content', 'Conciseness & Clarity', 'Genre & Style', 'Organisation & Layout', 'Language'];
+    const out = {};
+    order.forEach(k => { if (res.criteria[k]) out[k] = res.criteria[k]; });
+    res.criteria = out;
+    let issues = 0, serious = 0;
+    Object.values(out).forEach(a => a.forEach(i => { if (i.level === 'bad') serious++; if (i.level === 'warn') issues++; }));
+    res.stats.serious = serious; res.stats.minor = issues;
+    return res;
+  }
+
+  root.CNL = { checkLetter, splitLetter, groupHit, norm };
+  if (typeof module !== 'undefined') module.exports = root.CNL;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+<script>
+const EDITION = "free";
+const BUY_URL = "";
+const PRICE = "€24";
+const TASKS = [{"id": "t01", "title": "Hip replacement – discharge to district nurse", "letter_type": "discharge", "setting": "Orthopaedic ward", "difficulty": "easy", "today": "14 March 2026", "writer_role": "Charge Nurse, Ward 9 Orthopaedics, Ashdown General Hospital", "recipient": {"name": "Ms Karen Whitlock", "role": "District Nurse", "org": "Thornbury Community Nursing Team", "address": "4 Orchard Lane, Thornbury"}, "patient": "Mr Geoffrey Hallam, 74", "task": "Using the information in the case notes, write a letter to Ms Karen Whitlock, District Nurse at Thornbury Community Nursing Team, who will be visiting Mr Hallam at home after his discharge today. Address the letter to Ms Karen Whitlock, District Nurse, Thornbury Community Nursing Team, 4 Orchard Lane, Thornbury. In your answer: expand the relevant notes into complete sentences; do not use note form; use letter format. The body of the letter should be approximately 180–200 words.", "case_notes": [{"section": "Patient details", "notes": [{"id": "n1", "text": "Retired bus driver", "relevance": "irrelevant", "keywords": [["bus driver", "drove buses", "driving buses"]]}, {"id": "n2", "text": "Adm 09/03/2026 – elective R total hip replacement (THR)", "relevance": "key", "keywords": [["hip"], ["replace", "thr", "arthroplasty"]]}]}, {"section": "Social background", "notes": [{"id": "n3", "text": "Lives with wife (Margaret, 71) in bungalow", "relevance": "supporting", "keywords": [["bungalow"]]}, {"id": "n4", "text": "Wife helps with meals & shopping; has mild arthritis herself", "relevance": "supporting", "keywords": [["meal", "shopping"]]}, {"id": "n5", "text": "Son lives in Canada – phones weekly", "relevance": "irrelevant", "keywords": [["canada"]]}, {"id": "n6", "text": "Member of local bowls club – keen to return", "relevance": "irrelevant", "keywords": [["bowls"]]}]}, {"section": "Medical history", "notes": [{"id": "n7", "text": "OA R hip – 5 yrs, ↑pain & ↓mobility past 12 months", "relevance": "irrelevant", "keywords": [["osteoarthritis"]]}, {"id": "n8", "text": "Type 2 diabetes – metformin 500mg bd; HbA1c 52 mmol/mol (Jan 2026)", "relevance": "key", "keywords": [["diabet"]]}, {"id": "n9", "text": "Hypertension – amlodipine 5mg mane", "relevance": "supporting", "keywords": [["amlodipine", "hypertension"]]}, {"id": "n10", "text": "Appendicectomy 1978", "relevance": "irrelevant", "keywords": [["appendic"]]}, {"id": "n11", "text": "NKDA", "relevance": "irrelevant", "keywords": [["allerg"]]}]}, {"section": "Surgery & post-op", "notes": [{"id": "n12", "text": "Surgery 09/03 uneventful – posterior approach, spinal anaesthetic", "relevance": "supporting", "keywords": [["posterior", "spinal"]]}, {"id": "n13", "text": "Post-op Hb 98 g/L (pre-op 132) – asymptomatic, no transfusion", "relevance": "supporting", "keywords": [["haemoglobin", "transfus"]]}, {"id": "n14", "text": "Day 2: temp 37.9°C – resolved without antibiotics, cultures negative", "relevance": "irrelevant", "keywords": [["37.9", "pyrexi", "fever", "febrile", "cultures"]]}, {"id": "n15", "text": "Wound: 15cm lateral R hip incision, 20 clips in situ", "relevance": "key", "keywords": [["clip", "staple"]]}, {"id": "n16", "text": "Minimal serous ooze day 3, now clean & dry; Opsite Post-Op dressing intact", "relevance": "key", "keywords": [["dress"]]}, {"id": "n17", "text": "Clips for removal day 12–14 post-op (21–23/03/2026)", "relevance": "key", "keywords": [["clip", "staple"], ["remov"]]}]}, {"section": "Medication", "notes": [{"id": "n18", "text": "Enoxaparin 40mg SC od – 35 days total (until 13/04/2026)", "relevance": "key", "keywords": [["enoxaparin", "low molecular weight heparin", "clexane"]]}, {"id": "n19", "text": "Wife taught to give enoxaparin injections – not yet confident, needs supervision", "relevance": "key", "keywords": [["wife", "mrs hallam"], ["supervis", "confiden"]]}, {"id": "n20", "text": "Analgesia: paracetamol 1g qds regular, codeine 30mg qds PRN", "relevance": "key", "keywords": [["paracetamol"], ["codeine"]]}, {"id": "n21", "text": "Pain 2–3/10 at rest, 5/10 on mobilising", "relevance": "supporting", "keywords": [["/10", "pain score"]]}, {"id": "n22", "text": "Codeine-related constipation – lactulose 15ml bd, BO 13/03", "relevance": "supporting", "keywords": [["constipat", "lactulose", "bowel"]]}]}, {"section": "Mobility", "notes": [{"id": "n23", "text": "Mobilising with zimmer frame indoors, 2 elbow crutches for short distances", "relevance": "key", "keywords": [["frame", "crutch"]]}, {"id": "n24", "text": "Hip precautions x 6 wks: no flexion >90°, no crossing legs, no twisting", "relevance": "key", "keywords": [["precaution", "crossing", "cross his legs"]]}, {"id": "n25", "text": "OT: raised toilet seat, perching stool, chair raisers supplied & fitted", "relevance": "supporting", "keywords": [["toilet seat", "perching", "chair raiser"]]}, {"id": "n26", "text": "Outpatient physio booked 18/03; home exercise programme", "relevance": "supporting", "keywords": [["physio"]]}]}, {"section": "Discharge plan", "notes": [{"id": "n27", "text": "Signs of wound infection & DVT explained to pt and wife", "relevance": "key", "keywords": [["infection"], ["dvt", "thrombosis", "calf"]]}, {"id": "n28", "text": "Advised not to drive for 6 wks", "relevance": "irrelevant", "keywords": [["driv"]]}, {"id": "n29", "text": "Ortho clinic review 6 wks (24/04/2026)", "relevance": "supporting", "keywords": [["clinic"]]}, {"id": "n30", "text": "D/c 14/03/2026 via hospital transport, 11:00", "relevance": "irrelevant", "keywords": [["transport", "11:00"]]}]}], "purpose_keywords": [["visit", "review", "care", "remov", "supervis", "monitor"], ["wound", "clip", "enoxaparin", "injection"]], "model_letter": "Ms Karen Whitlock\nDistrict Nurse\nThornbury Community Nursing Team\n4 Orchard Lane\nThornbury\n\n14 March 2026\n\nDear Ms Whitlock,\n\nRe: Mr Geoffrey Hallam, DOB 03/07/1951\n\nI am writing to request your ongoing care of Mr Hallam, who is being discharged home today following an elective right total hip replacement on 9 March. He will require wound review, clip removal and support with his anticoagulant injections.\n\nMr Hallam has type 2 diabetes, so his wound should be monitored closely. The 15cm incision is closed with 20 clips and is currently clean and dry under an Opsite Post-Op dressing. The clips are due for removal between 21 and 23 March.\n\nHe has been prescribed enoxaparin 40mg subcutaneously once daily until 13 April. His wife has been taught to administer the injections; however, she is not yet confident and would benefit from supervision. For pain, he takes regular paracetamol 1g four times daily and codeine 30mg as required.\n\nHe is mobilising with a walking frame indoors and two crutches for short distances. He must follow hip precautions for six weeks, avoiding bending beyond 90 degrees, crossing his legs and twisting. Both he and his wife have been advised about the signs of wound infection and deep vein thrombosis.\n\nShould you have any questions, please do not hesitate to contact me.\n\nYours sincerely,\n\nCharge Nurse\nWard 9 Orthopaedics\nAshdown General Hospital", "notes_on_model": ["The opening paragraph states the reason for the letter (discharge after hip replacement) and exactly what the district nurse must do: wound review, clip removal and injection support.", "Paragraphs follow the district nurse's tasks: wound and clips first, then medication and injections, then mobility and safety advice.", "Diabetes is mentioned because it affects wound healing; old history such as the 1978 appendicectomy is left out.", "The resolved temperature on day 2 is a distractor – it settled without treatment and does not change the community plan.", "Hobbies (bowls), the son in Canada, driving advice and transport times are not needed by the district nurse.", "Useful phrases: 'is due for removal between…', 'would benefit from supervision', 'has been advised about the signs of…'."]}, {"id": "t02", "title": "New insulin start – referral to diabetes specialist nurse", "letter_type": "referral", "setting": "Acute medical unit", "difficulty": "easy", "locked": true}, {"id": "t03", "title": "Child with asthma – update letter to school nurse", "letter_type": "update", "setting": "Paediatric ward", "difficulty": "medium", "locked": true}, {"id": "t04", "title": "COPD exacerbation – discharge to community respiratory team", "letter_type": "discharge", "setting": "Respiratory ward", "difficulty": "medium", "locked": true}, {"id": "t05", "title": "Stroke – transfer to rehabilitation unit", "letter_type": "transfer", "setting": "Acute stroke unit", "difficulty": "medium", "locked": true}, {"id": "t06", "title": "Non-healing leg ulcer – referral to tissue viability nurse", "letter_type": "referral", "setting": "Community nursing", "difficulty": "medium", "locked": true}, {"id": "t07", "title": "Dementia and falls – transfer to residential aged care", "letter_type": "transfer", "setting": "Aged care ward", "difficulty": "hard", "locked": true}, {"id": "t08", "title": "Postnatal low mood and gestational diabetes – referral to health visitor", "letter_type": "referral", "setting": "Postnatal ward (maternity)", "difficulty": "hard", "locked": true}, {"id": "t09", "title": "Child after appendicectomy – wound review", "letter_type": "discharge", "setting": "Paediatric surgical ward", "difficulty": "easy", "today": "12 January 2026", "writer_role": "Staff Nurse, Ward 12 (Paediatric Surgery), Northfield General Hospital", "recipient": {"name": "Ms Fiona Grant", "role": "Practice Nurse", "org": "Hawthorn Medical Practice", "address": "22 Mill Lane, Kettering NN15 6TQ"}, "patient": "Leo Dawson, 8", "task": "Using the information in the case notes, write a letter to Ms Fiona Grant, Practice Nurse at Leo's GP surgery, who will review his wound and remove his sutures. Address the letter to Ms Fiona Grant, Practice Nurse, Hawthorn Medical Practice, 22 Mill Lane, Kettering NN15 6TQ. In your answer: expand the relevant notes into complete sentences; do not use note form; use letter format. The body of the letter should be approximately 180–200 words.", "case_notes": [{"section": "Patient details", "notes": [{"id": "n1", "text": "Leo Dawson, DOB 03/05/2017 (8 y), wt 26 kg", "relevance": "supporting", "keywords": [["dawson"]]}, {"id": "n2", "text": "Lives with parents & sister (3 y). Mother works from home – main carer during recovery", "relevance": "supporting", "keywords": [["mother", "mum"]]}, {"id": "n3", "text": "Yr 4 pupil, Brookfield Primary School", "relevance": "supporting", "keywords": [["primary school", "brookfield"]]}, {"id": "n4", "text": "Plays football for local club (Saturdays)", "relevance": "supporting", "keywords": [["football"]]}, {"id": "n5", "text": "Family dog (Labrador) at home", "relevance": "irrelevant", "keywords": [["dog", "labrador"]]}, {"id": "n6", "text": "Father works night shifts – taxi driver", "relevance": "irrelevant", "keywords": [["taxi", "night shift"]]}]}, {"section": "Medical history", "notes": [{"id": "n7", "text": "Mild asthma – salbutamol 100 mcg inh PRN (rarely used). Has tolerated ibuprofen previously", "relevance": "supporting", "keywords": [["asthma"]]}, {"id": "n8", "text": "NKDA", "relevance": "supporting", "keywords": [["nkda", "no known", "allerg"]]}, {"id": "n9", "text": "Immunisations up to date", "relevance": "irrelevant", "keywords": [["immunis", "vaccin"]]}, {"id": "n10", "text": "Tonsillitis x2 (2023) – treated by GP", "relevance": "irrelevant", "keywords": [["tonsil"]]}]}, {"section": "Admission", "notes": [{"id": "n11", "text": "08/01/26: 24 h central abdo pain → RIF, vomiting x3, T 38.2°C", "relevance": "irrelevant", "keywords": [["vomit", "right iliac", "38.2"]]}, {"id": "n12", "text": "Bloods: WCC 16.2, CRP 87", "relevance": "irrelevant", "keywords": [["wcc", "crp", "white cell", "blood test"]]}, {"id": "n13", "text": "USS abdo: appearances c/w acute appendicitis", "relevance": "key", "keywords": [["appendicitis"]]}, {"id": "n14", "text": "09/01/26: laparoscopic appendicectomy under GA – appendix gangrenous, not perforated", "relevance": "key", "keywords": [["laparoscop", "keyhole"], ["gangren"]]}]}, {"section": "Nursing management", "notes": [{"id": "n15", "text": "IV co-amoxiclav x 48 h → oral 11/01", "relevance": "supporting", "keywords": [["intravenous", "iv antibiotic"]]}, {"id": "n16", "text": "Analgesia: regular paracetamol + ibuprofen – pain score 1–2/10", "relevance": "key", "keywords": [["paracetamol"], ["ibuprofen"]]}, {"id": "n17", "text": "Apyrexial since 10/01; obs within normal limits", "relevance": "supporting", "keywords": [["apyrexial", "afebrile", "temperature"]]}, {"id": "n18", "text": "Anxious re needles (cannula) – play specialist & distraction helpful", "relevance": "irrelevant", "keywords": [["needle", "play specialist", "distraction"]]}, {"id": "n19", "text": "Wounds: 2 lateral port sites closed with tissue glue – healing well", "relevance": "key", "keywords": [["glue"]]}, {"id": "n20", "text": "Umbilical port: non-absorbable sutures; mild erythema, no discharge", "relevance": "key", "keywords": [["umbilic", "belly button"], ["erythema", "redness", "reddened"]]}, {"id": "n21", "text": "Wound swab (umbilicus) sent 11/01 – result pending", "relevance": "key", "keywords": [["swab"]]}]}, {"section": "Discharge plan", "notes": [{"id": "n22", "text": "Co-amoxiclav 250/62 mg/5 mL susp, 5 mL TDS – 5 more days (complete 16/01)", "relevance": "key", "keywords": [["co-amoxiclav", "antibiotic"], ["five days", "5 days", "16 january", "16/01"]]}, {"id": "n23", "text": "Practice nurse: wound review + removal of umbilical sutures day 10 post-op (19/01/26)", "relevance": "key", "keywords": [["suture", "stitch"], ["remov"]]}, {"id": "n24", "text": "Parents taught signs of wound infection; to contact GP/ward if concerned", "relevance": "key", "keywords": [["infection"]]}, {"id": "n25", "text": "Off school 1/52; no PE/contact sport x 4/52", "relevance": "key", "keywords": [["sport", "physical education"]]}, {"id": "n26", "text": "No surgical OPD f/u needed; histology → GP", "relevance": "supporting", "keywords": [["histolog"]]}]}], "purpose_keywords": [["review", "check", "assess"], ["wound", "suture", "stitch"]], "model_letter": "Ms Fiona Grant\nPractice Nurse\nHawthorn Medical Practice\n22 Mill Lane\nKettering NN15 6TQ\n\n12 January 2026\n\nDear Ms Grant,\n\nRe: Leo Dawson, DOB 03/05/2017\n\nI am writing to request that you review the umbilical wound of Leo Dawson, an eight-year-old boy who is being discharged home today, and remove his sutures on 19 January.\n\nLeo was admitted on 8 January with acute appendicitis and underwent a laparoscopic appendicectomy the following day. The appendix was found to be gangrenous but had not perforated. He received intravenous antibiotics for 48 hours and is now taking oral co-amoxiclav 250/62 mg suspension, 5 mL three times daily, for a further five days. His pain is well controlled with regular paracetamol and ibuprofen, which may be given as required after 48 hours. Although he has mild asthma, he has tolerated ibuprofen without any problems.\n\nTwo port sites closed with tissue glue are healing well. However, the umbilical wound, which has non-absorbable sutures, shows mild erythema without discharge. A wound swab was taken yesterday and the result is pending.\n\nHis parents have been taught to recognise the signs of wound infection. Leo should stay off school for one week and avoid contact sports and physical education for four weeks.\n\nPlease do not hesitate to contact me if you have any queries.\n\nYours sincerely,\n\nStaff Nurse\nWard 12 (Paediatric Surgery), Northfield General Hospital", "notes_on_model": ["The opening sentence tells the practice nurse exactly what is needed (wound review and suture removal) and when.", "The presenting symptoms, admission blood results and needle anxiety are left out: they are history, and the practice nurse does not need them to check a wound.", "Asthma is a tricky note: it is only worth mentioning because it shows that ibuprofen is safe for Leo.", "The wound details are grouped together and the problem wound (umbilical erythema, swab pending) comes after the ones that are healing well, introduced with 'However'.", "Useful phrases: 'underwent a laparoscopic appendicectomy', 'may be given as required', 'the result is pending'."]}, {"id": "t10", "title": "Heart failure – community follow-up", "letter_type": "discharge", "setting": "Cardiology ward", "difficulty": "easy", "locked": true}, {"id": "t11", "title": "New colostomy – stoma nurse referral", "letter_type": "discharge", "setting": "Colorectal surgical ward", "difficulty": "medium", "locked": true}, {"id": "t12", "title": "Alcohol withdrawal – community AOD referral", "letter_type": "referral", "setting": "Emergency short stay unit", "difficulty": "medium", "locked": true}, {"id": "t13", "title": "Palliative care at home – syringe pump", "letter_type": "referral", "setting": "Oncology ward", "difficulty": "medium", "locked": true}, {"id": "t14", "title": "Hand burn – burns dressing clinic", "letter_type": "referral", "setting": "Emergency department", "difficulty": "medium", "locked": true}, {"id": "t15", "title": "First-episode psychosis – CMHT referral", "letter_type": "referral", "setting": "Acute medical unit", "difficulty": "hard", "locked": true}, {"id": "t16", "title": "Return to care home – warfarin changes", "letter_type": "transfer", "setting": "Care of the elderly ward", "difficulty": "hard", "locked": true}, {"id": "t17", "title": "Infant with bronchiolitis: discharge to health visitor", "letter_type": "discharge", "setting": "Paediatric ward", "difficulty": "easy", "today": "14 January 2026", "writer_role": "Staff Nurse, Robin Ward (Paediatrics), Kingsmere General Hospital", "recipient": {"name": "Ms Hannah Lowther", "role": "Health Visitor", "org": "Ashby Lane Health Centre", "address": "22 Ashby Lane, Hollinsford HF4 2JD"}, "patient": "Baby Oscar Penhale, 3 months", "task": "You are a staff nurse on the paediatric ward. Oscar is being discharged home today. Using the information in the case notes, write a letter to the health visitor, Ms Hannah Lowther, requesting a home visit and follow-up. Address the letter to Ms Hannah Lowther, Health Visitor, Ashby Lane Health Centre, 22 Ashby Lane, Hollinsford HF4 2JD. In your answer:\n- expand the relevant notes into complete sentences\n- do not use note form\n- use letter format\n\nThe body of the letter should be approximately 180–200 words.", "case_notes": [{"section": "Patient details", "notes": [{"id": "n1", "text": "Oscar Penhale, DOB 08/10/2025 (3/12). Born 37+2/40, SVD, BW 2.9 kg", "relevance": "supporting", "keywords": [["birth weight", "37 weeks", "vaginal delivery", "born at 37"]]}, {"id": "n2", "text": "Formula fed (first infant milk) ~120 mL 3-hrly pre-adm", "relevance": "supporting", "keywords": [["formula"]]}]}, {"section": "Social background", "notes": [{"id": "n3", "text": "Lives with mother (Chloe, 19 yrs, first baby) in 1-bed flat. Father not involved", "relevance": "key", "keywords": [["first-time", "first time", "first baby", "first child"], ["19-year", "aged 19", "19 years", "nineteen", "young"]]}, {"id": "n4", "text": "Mother smokes ~10 cig/day — states smokes outside flat only", "relevance": "key", "keywords": [["smok", "cigarette"]]}, {"id": "n5", "text": "Maternal grandmother lives 2 miles away, visits weekly", "relevance": "supporting", "keywords": [["grandmother", "grandparent"]]}, {"id": "n6", "text": "Mother worked part-time in café pre-birth; currently on maternity leave", "relevance": "irrelevant", "keywords": [["café", "cafe", "maternity leave"]]}, {"id": "n7", "text": "Father (not involved): childhood asthma", "relevance": "irrelevant", "keywords": [["asthma"]]}, {"id": "n8", "text": "Maternal aunt had bronchiolitis as a baby — mother worried it 'runs in the family'", "relevance": "irrelevant", "keywords": [["aunt", "runs in the family"]]}]}, {"section": "Medical history", "notes": [{"id": "n9", "text": "8-wk immunisations given. 12-wk imms deferred during adm — now due", "relevance": "key", "keywords": [["immunis", "vaccin", "jab"]]}, {"id": "n10", "text": "No previous admissions", "relevance": "supporting", "keywords": [["previous admission", "first admission", "no previous"]]}, {"id": "n11", "text": "Nappy rash wk 6 — resolved with barrier cream", "relevance": "irrelevant", "keywords": [["nappy rash", "barrier cream"]]}, {"id": "n12", "text": "Newborn hearing screen: clear response both ears", "relevance": "irrelevant", "keywords": [["hearing"]]}]}, {"section": "Admission", "notes": [{"id": "n13", "text": "Adm 10/01/26: 2/7 coryza, cough, SOB, ↓ feeds (<50% usual)", "relevance": "key", "keywords": [["coryza", "cough", "cold", "runny nose"], ["feed"]]}, {"id": "n14", "text": "On adm: RR 62, SpO2 89% RA, mild subcostal recession, T 37.8°C", "relevance": "supporting", "keywords": [["recession", "respiratory rate", "rr 62"]]}, {"id": "n15", "text": "NPA: RSV positive", "relevance": "supporting", "keywords": [["rsv", "respiratory syncytial", "nasopharyngeal"]]}, {"id": "n16", "text": "Dx: bronchiolitis", "relevance": "key", "keywords": [["bronchiolitis"]]}]}, {"section": "Nursing management", "notes": [{"id": "n17", "text": "O2 via nasal cannula 0.5 L/min × 36 hrs; weaned to RA 12/01", "relevance": "supporting", "keywords": [["oxygen", "o2"]]}, {"id": "n18", "text": "NG feeds 24 hrs, full oral feeds resumed 12/01", "relevance": "supporting", "keywords": [["nasogastric", "ng feed", "tube"]]}, {"id": "n19", "text": "Paracetamol 80 mg PO PRN (15 mg/kg) × 2 doses, last 11/01", "relevance": "irrelevant", "keywords": [["paracetamol", "calpol"]]}, {"id": "n20", "text": "Mother taught: saline nose drops + gentle nasal suction before feeds", "relevance": "key", "keywords": [["saline", "nose drops", "nasal drops", "suction"]]}, {"id": "n21", "text": "Wt: adm 5.6 kg; d/c 5.5 kg", "relevance": "key", "keywords": [["weigh"], ["5.5", "5.6", "fell", "loss", "lost", "dropped", "decreas"]]}]}, {"section": "Progress", "notes": [{"id": "n22", "text": "13/01: SpO2 95–98% RA, RR 44, taking full feeds 120 mL 3-hrly", "relevance": "key", "keywords": [["feed", "formula", "bottle"], ["120", "full", "normal", "usual"]]}, {"id": "n23", "text": "Mother anxious, tearful, ↓ sleep; states 'can't cope when he's poorly'", "relevance": "key", "keywords": [["anxious", "anxiety", "tearful", "low mood", "cope", "coping"]]}, {"id": "n24", "text": "Cough may persist 3–4 wks — explained to mother", "relevance": "supporting", "keywords": [["persist", "linger", "four weeks", "4 weeks"]]}]}, {"section": "Discharge plan", "notes": [{"id": "n25", "text": "D/c home 14/01/26. No meds", "relevance": "key", "keywords": [["discharg"], ["today", "14 january"]]}, {"id": "n26", "text": "Red flags taught: feeds <50% usual, pauses in breathing, blue lips, ↑ work of breathing → 999/return to ED", "relevance": "key", "keywords": [["urgent", "999", "emergency", "seek help", "seek medical", "return"], ["blue", "pause", "apnoea", "half"]]}, {"id": "n27", "text": "Request HV home visit within 1 wk: wt, feeding, maternal mood, smoking", "relevance": "key", "keywords": [["visit"], ["week", "7 days", "seven days"]]}, {"id": "n28", "text": "Referred to local stop smoking service; leaflet given", "relevance": "supporting", "keywords": [["stop smoking service", "cessation service", "leaflet"]]}, {"id": "n29", "text": "No paediatric OPD f/u required", "relevance": "supporting", "keywords": [["outpatient", "follow-up appointment", "clinic"]]}, {"id": "n30", "text": "Mother asked about baby swimming classes", "relevance": "irrelevant", "keywords": [["swim"]]}, {"id": "n31", "text": "Car seat checked at d/c", "relevance": "irrelevant", "keywords": [["car seat"]]}]}], "purpose_keywords": [["visit", "review", "assess", "monitor", "follow"], ["feed", "weigh", "weight"], ["mother", "mood", "wellbeing"]], "model_letter": "Ms Hannah Lowther\nHealth Visitor\nAshby Lane Health Centre\n22 Ashby Lane\nHollinsford HF4 2JD\n\n14 January 2026\n\nDear Ms Lowther,\n\nRe: Oscar Penhale, DOB 08/10/2025\n\nI am writing to request a home visit within one week for Oscar, who is being discharged today after treatment for bronchiolitis, so that his feeding, weight and his mother's wellbeing can be reviewed.\n\nOscar was admitted on 10 January with a two-day history of coryza, cough, breathlessness and reduced feeding. Following brief oxygen therapy and nasogastric feeding, he is now taking full feeds of 120 mL of formula three-hourly. However, his weight fell from 5.6 kg on admission to 5.5 kg, so regular weighing would be appreciated.\n\nHis mother, Chloe, is a 19-year-old first-time parent who lives alone with Oscar. During the admission, she appeared anxious and tearful, slept poorly and said she finds it hard to cope when he is unwell. She also smokes approximately ten cigarettes daily, so further support to stop would be beneficial.\n\nChloe has been taught to use saline nose drops and gentle nasal suction before feeds. She knows to seek urgent help if Oscar takes less than half his usual feeds, has pauses in his breathing or develops blue lips. Finally, his 12-week immunisations, deferred during admission, are now due.\n\nYours sincerely,\n\nStaff Nurse\nRobin Ward (Paediatrics)\nKingsmere General Hospital", "notes_on_model": ["The opening sentence gives the purpose (a home visit within a week) and the three areas the health visitor should focus on: feeding, weight and maternal wellbeing.", "The weight drop (5.6 kg to 5.5 kg) is key because the health visitor will weigh Oscar and needs a baseline to compare against.", "Social details are grouped in one paragraph: a young, first-time mother who is anxious and smokes is exactly what a health visitor acts on.", "Inpatient details such as paracetamol doses, the hearing screen, nappy rash and the father's asthma are left out because they do not change community care.", "The father's asthma is a tricky distractor: it seems medical, but it has no bearing on Oscar's follow-up.", "Useful phrases: 'regular weighing would be appreciated', 'she knows to seek urgent help if…', 'are now due'."]}, {"id": "t18", "title": "Cellulitis switched to oral antibiotics: discharge to practice nurse", "letter_type": "discharge", "setting": "Medical ward", "difficulty": "easy", "locked": true}, {"id": "t19", "title": "Grade 3 sacral pressure ulcer: referral to district nurse", "letter_type": "referral", "setting": "Care of the elderly ward", "difficulty": "medium", "locked": true}, {"id": "t20", "title": "Teenager newly diagnosed with epilepsy: letter to school nurse", "letter_type": "update", "setting": "Paediatric neurology outpatients", "difficulty": "medium", "locked": true}, {"id": "t21", "title": "Knee replacement with wound infection: transfer to community hospital", "letter_type": "transfer", "setting": "Orthopaedic ward", "difficulty": "medium", "locked": true}, {"id": "t22", "title": "Starting home peritoneal dialysis: referral to renal community nurse", "letter_type": "referral", "setting": "Renal ward", "difficulty": "medium", "locked": true}, {"id": "t23", "title": "Parkinson's disease with aspiration pneumonia: referral to speech and language therapist", "letter_type": "referral", "setting": "Care of the elderly ward", "difficulty": "hard", "locked": true}, {"id": "t24", "title": "Fractured wrist with domestic abuse concerns: ED letter to GP", "letter_type": "referral", "setting": "Emergency department", "difficulty": "hard", "locked": true}];
+const PHRASES = [{"title": "Opening: state the purpose", "items": ["I am writing to refer Mr Bell, who requires …", "I am writing to request your assessment of …", "I am writing regarding Mrs Lee, who is being discharged home today following …", "I am writing to inform you that Ms Khan has been transferred to your facility for …", "Thank you for accepting Mr Ortiz into your care. He is being discharged today after …", "I would be grateful if you could review Mr Hall's wound on a daily basis."]}, {"title": "Background and history", "items": ["He was admitted on 3 March with …", "She has a history of hypertension and type 2 diabetes.", "On admission, he presented with shortness of breath and a productive cough.", "She underwent an uncomplicated laparoscopic cholecystectomy on 10 March.", "Her past medical history is significant for …"]}, {"title": "Treatment and progress", "items": ["He was treated with intravenous antibiotics, which were changed to oral amoxicillin on day three.", "Her condition has improved steadily, and she is now mobilising independently.", "His pain is well controlled with regular paracetamol.", "Her blood glucose levels have stabilised within the target range.", "The wound is clean and dry, with no signs of infection."]}, {"title": "Social situation", "items": ["He lives alone in a two-storey house with the bathroom upstairs.", "She lives with her husband, who is her main carer.", "His daughter visits daily and is able to assist with shopping.", "She is independent with activities of daily living."]}, {"title": "Requests to the reader", "items": ["I would be grateful if you could monitor …", "It would be appreciated if you could arrange …", "Could you please continue the dressing regime as outlined below?", "Please review her medication and adjust the dose as required.", "I would appreciate it if you could provide further education on …"]}, {"title": "Discharge plan and follow-up", "items": ["He has been discharged with a seven-day supply of …", "She has an outpatient appointment on 21 March.", "His staples are due to be removed on day 10, on 23 March.", "She has been advised to seek medical attention if she develops a fever.", "A copy of her medication chart is enclosed."]}, {"title": "Closing", "items": ["Should you require any further information, please do not hesitate to contact me.", "Thank you for your assistance in his ongoing care.", "Yours sincerely, (after Dear Mr/Ms/Dr + surname)", "Yours faithfully, (after Dear Sir/Madam)"]}, {"title": "Linking ideas", "items": ["In addition, …", "However, …", "As a result, …", "Consequently, …", "Following his surgery, …", "Prior to admission, …", "Due to her reduced mobility, …", "Despite this, …"]}];
+</script>
+<script>
+(function(){
+'use strict';
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem('cnl:'+k); return v==null ? d : JSON.parse(v);}catch(e){return d;} },
+  set(k, v){ try{ localStorage.setItem('cnl:'+k, JSON.stringify(v)); }catch(e){} }
+};
+const TYPE_LABEL = {referral:'Referral', discharge:'Discharge', transfer:'Transfer', update:'Update / advice'};
+const view = $('#view');
+let timerHandle = null;
+
+function toast(msg){ const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+function buyBox(title){
+  if (EDITION === 'full') return '';
+  const n = TASKS.length;
+  if (!BUY_URL) return `<div class="buybox"><div><h3>Full pack: ${n} cases</h3><p>All ${n} original nursing cases with the content check, model letters and teaching notes, exam timer and phrase bank, offline. Launching in the next few days.</p></div><div class="price">${esc(PRICE)}</div></div>`;
+  return `<div class="buybox"><div><h3>${esc(title||'Get all '+n+' cases')}</h3><p>${n} original nursing cases with automatic content check, model letters with teaching notes, exam timer and phrase bank. Works offline on phone and laptop. One payment, no subscription.</p></div>
+  <div style="text-align:right"><div class="price">${esc(PRICE)}</div><a class="btn primary" href="${esc(BUY_URL)}" target="_blank" rel="noopener">Get the full pack</a></div></div>`;
+}
+function bestOf(id){ const h = store.get('hist:'+id, []); if(!h.length) return null; return h.reduce((a,b)=> (b.key||0) > (a.key||0) ? b : a); }
+
+// ---------- views ----------
+function home(){
+  const free = TASKS.filter(t=>!t.locked);
+  const sample = free[0];
+  view.innerHTML = `
+  <section class="hero">
+    <div>
+      <h1>Practise OET Writing for nurses and see exactly what your letter is missing.</h1>
+      <p class="lead">Write your letter from real-style case notes. CaseNote Lab checks it in seconds against the six OET criteria and shows which key notes you used, which you missed and which details the reader did not need.</p>
+      <p style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+        <a class="btn primary" href="#/case/${sample.id}">Try a free case</a>
+        <a class="btn" href="#/checker">Check a letter you already wrote</a>
+      </p>
+      <p class="muted" style="font-size:.88rem">Free · no sign-up · your letters stay on your device.</p>
+    </div>
+    <div class="card demo">
+      <div class="muted" style="font-family:var(--sans);font-size:.8rem;margin-bottom:6px">EXAMPLE FEEDBACK</div>
+      <div class="it ok"><span class="ic">✓</span><div>Your first sentence states why you are writing.</div></div>
+      <div class="it bad"><span class="ic">!</span><div>2 of 11 key notes seem to be missing.<div class="d">“Staples due for removal 23/3” · “Lives alone, bathroom upstairs”</div></div></div>
+      <div class="it bad"><span class="ic">!</span><div>You included 1 detail this reader does not need.<div class="d">“Appendicectomy 1978”</div></div></div>
+      <div class="it warn"><span class="ic">!</span><div>Some words are too informal.<div class="d">“got better” → improved</div></div></div>
+    </div>
+  </section>
+  <div class="feat">
+    <div class="card"><h3>Content check for every case</h3><p>Each case has a map of key, optional and irrelevant notes, so you learn what to select, not only how to write.</p></div>
+    <div class="card"><h3>The six OET criteria</h3><p>Purpose, Content, Conciseness &amp; Clarity, Genre &amp; Style, Organisation &amp; Layout and Language, checked separately.</p></div>
+    <div class="card"><h3>Exam mode</h3><p>5 minutes reading with the editor locked, then 40 minutes to write, like test day.</p></div>
+    <div class="card"><h3>Model letters explained</h3><p>Every case has a model letter of 180–200 words and notes on why each choice was made.</p></div>
+  </div>
+  ${buyBox()}
+  <h2>Cases</h2>
+  ${caseGrid(TASKS.slice(0, 6))}
+  <p><a href="#/cases">See all ${TASKS.length} cases →</a></p>`;
+}
+
+function caseGrid(list){
+  return `<div class="grid g3">${list.map(t=>{
+    const b = bestOf(t.id);
+    return `<a class="card casecard" href="#/case/${t.id}">
+      <div><span class="pill">${esc(TYPE_LABEL[t.letter_type]||t.letter_type)}</span><span class="pill ${t.difficulty}">${esc(t.difficulty)}</span></div>
+      <h3>${esc(t.title)}</h3>
+      <div class="meta">${esc(t.setting)}</div>
+      ${t.locked ? `<div class="lock">🔒 Full pack</div>` : (b ? `<div class="score">Best attempt: ${b.key}% key notes · ${b.irr} irrelevant</div>` : `<div class="lock" style="color:var(--brand)">${EDITION==='free'?'Free case':'Not attempted'}</div>`)}
+    </a>`;}).join('')}</div>`;
+}
+
+function cases(){
+  const f = store.get('filter', 'all');
+  const types = ['all','referral','discharge','transfer','update','easy','medium','hard'];
+  const list = TASKS.filter(t => f==='all' || t.letter_type===f || t.difficulty===f);
+  view.innerHTML = `<h1>Practice cases</h1>
+  <p class="lead">${TASKS.length} original nursing cases. ${EDITION==='free' ? `${TASKS.filter(t=>!t.locked).length} are free to try here.` : 'All cases are unlocked.'}</p>
+  <div class="filters">${types.map(x=>`<button data-f="${x}" class="${x===f?'on':''}">${x==='all'?'All':esc(TYPE_LABEL[x]||x)}</button>`).join('')}</div>
+  ${caseGrid(list)}${buyBox()}`;
+  view.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{store.set('filter', b.dataset.f); cases();});
+}
+
+function notesHtml(t, res){
+  const n = res && res.notes;
+  const cls = id => { if(!n) return ''; if(n.key.find(x=>x.id===id)) return 'hit-key'; if(n.keyMissed.find(x=>x.id===id)) return 'miss-key'; if(n.irrelevant.find(x=>x.id===id)) return 'hit-irr'; if(n.supporting.find(x=>x.id===id)) return 'hit-sup'; return ''; };
+  const tag = c => ({'hit-key':'<span class="tag" style="color:var(--ok)">key ✓</span>','miss-key':'<span class="tag" style="color:var(--bad)">key – missing</span>','hit-irr':'<span class="tag" style="color:var(--bad)">not needed</span>','hit-sup':'<span class="tag" style="color:var(--warn)">optional</span>'})[c]||'';
+  return `<div class="task"><b>Writing task.</b> ${esc(t.task)}</div>
+  <div class="muted" style="font-size:.85rem">Today's date: ${esc(t.today)} · Patient: ${esc(t.patient)}</div>
+  ${t.case_notes.map(s=>`<h4>${esc(s.section)}</h4><ul>${s.notes.map(x=>{const c=cls(x.id);return `<li class="${c}">${esc(x.text)}${tag(c)}</li>`;}).join('')}</ul>`).join('')}
+  ${n ? `<div class="legend"><span class="k">key note used</span><span class="m">key note missing</span><span class="s">optional note used</span><span class="i">not needed by this reader</span></div>`:''}`;
+}
+
+function reportHtml(res){
+  if (res.empty) return `<div class="notice">Write your letter first, then press <b>Check my letter</b>.</div>`;
+  const s = res.stats;
+  const worst = arr => arr.some(i=>i.level==='bad')?'bad':arr.some(i=>i.level==='warn')?'warn':arr.every(i=>i.level==='info')?'info':'ok';
+  return `<div class="summary">
+    <div class="stat"><b>${s.words}</b><span>words in body</span></div>
+    ${s.keyCoverage!=null?`<div class="stat"><b>${s.keyCoverage}%</b><span>key notes used</span></div><div class="stat"><b>${s.irrelevant}</b><span>irrelevant details</span></div>`:''}
+    <div class="stat"><b>${s.serious}</b><span>problems</span></div>
+    <div class="stat"><b>${s.minor}</b><span>suggestions</span></div>
+  </div>
+  ${Object.entries(res.criteria).map(([k,arr])=>{const w=worst(arr);return `<details class="crit" ${w==='bad'||w==='warn'?'open':''}><summary><span class="dot ${w}"></span>${esc(k)}</summary><div class="items">${arr.map(i=>`<div class="it ${i.level}"><span class="ic">${i.level==='ok'?'✓':i.level==='info'?'i':'!'}</span><div>${esc(i.msg)}${i.detail?`<div class="d">${esc(i.detail)}</div>`:''}</div></div>`).join('')}</div></details>`;}).join('')}
+  <p class="muted" style="font-size:.82rem">This is automatic practice feedback based on rules and this case's note map. It cannot judge everything an assessor reads (tone, accuracy, grammar in depth), and it is not an OET score.</p>`;
+}
+
+function caseView(id){
+  const t = TASKS.find(x=>x.id===id);
+  if(!t){ view.innerHTML='<p>Case not found. <a href="#/cases">Back to cases</a></p>'; return; }
+  if(t.locked){
+    view.innerHTML = `<p><a href="#/cases">← All cases</a></p><h1>${esc(t.title)}</h1><p class="lead">${esc(t.setting)} · ${esc(TYPE_LABEL[t.letter_type])} · ${esc(t.difficulty)}</p>
+    <div class="notice">This case is part of the full pack. Try the free cases first to see how the checker works.</div>${buyBox('Unlock this case and all '+TASKS.length)}
+    <h2>Free cases</h2>${caseGrid(TASKS.filter(x=>!x.locked))}`; return;
+  }
+  const draftKey = 'draft:'+id;
+  let lastRes = null;
+  view.innerHTML = `<p style="margin:0 0 8px"><a href="#/cases">← All cases</a></p>
+  <div class="casehead"><div><h1>${esc(t.title)}</h1><div class="muted">${esc(t.setting)} · <span class="pill">${esc(TYPE_LABEL[t.letter_type])}</span><span class="pill ${t.difficulty}">${esc(t.difficulty)}</span></div></div>
+    <div class="toolbar" style="margin:0"><span id="timer" class="timer" hidden></span><button class="btn small" id="exam">Start exam mode (45 min)</button></div></div>
+  <div class="tabs"><button data-t="notes" class="on">Case notes</button><button data-t="letter">My letter</button></div>
+  <div class="split mobile-notes" id="split">
+    <div class="notes-col"><div class="card notes sticky" id="notes" style="max-height:calc(100vh - 90px);overflow:auto">${notesHtml(t,null)}</div></div>
+    <div class="letter-col">
+      <textarea class="letter" id="letter" spellcheck="true" placeholder="${esc(t.recipient.name)}\n${esc(t.recipient.role)}\n${esc(t.recipient.org)}\n${esc(t.recipient.address)}\n\n${esc(t.today)}\n\nDear ...,\n\nRe: ...\n\n(Write your letter here.)"></textarea>
+      <div class="toolbar">
+        <button class="btn primary" id="check">Check my letter</button>
+        <button class="btn" id="model">Model letter</button>
+        <button class="btn small" id="clear">Clear</button>
+        <span class="wc" id="wc"></span>
+      </div>
+      <div id="report"></div>
+      <div id="modelbox"></div>
+    </div>
+  </div>`;
+  const ta = $('#letter'), split=$('#split');
+  ta.value = store.get(draftKey, '');
+  const upd = () => { const s = CNL.splitLetter(ta.value); const n=(s.body.match(/[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9'’\-/.]*/g)||[]).length; const cl = n>=180&&n<=210?'ok':(n>=160&&n<=230?'warn':'bad'); $('#wc').innerHTML = `Body: <b class="${n?cl:''}">${n}</b> words · guide 180–200`; };
+  ta.addEventListener('input', ()=>{ store.set(draftKey, ta.value); upd(); });
+  upd();
+  view.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ view.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)); split.className='split mobile-'+b.dataset.t; });
+  $('#check').onclick = () => {
+    const res = CNL.checkLetter(ta.value, t); lastRes = res;
+    $('#report').innerHTML = `<div class="report"><h2 style="margin-top:6px">Feedback</h2>${reportHtml(res)}</div>`;
+    $('#notes').innerHTML = notesHtml(t, res);
+    if(!res.empty){ const h=store.get('hist:'+id,[]); h.push({d:new Date().toISOString().slice(0,10), w:res.stats.words, key:res.stats.keyCoverage, irr:res.stats.irrelevant, p:res.stats.serious}); store.set('hist:'+id,h.slice(-20)); }
+    $('#report').scrollIntoView({behavior:'smooth', block:'start'});
+  };
+  $('#model').onclick = () => {
+    const mb = $('#modelbox');
+    if (mb.innerHTML) { mb.innerHTML=''; return; }
+    if (!ta.value.trim() && !confirm('You will learn more if you write your own letter first. Show the model letter anyway?')) return;
+    const res = CNL.checkLetter(t.model_letter, t);
+    mb.innerHTML = `<h2>Model letter</h2><div class="model">${esc(t.model_letter)}</div>
+      <p class="muted" style="font-size:.86rem">Body: ${res.stats.words} words · key notes used: ${res.stats.keyCoverage}%</p>
+      <h3>Why it is written this way</h3><ul class="teach">${t.notes_on_model.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+      <h3>Self-check before you finish</h3><div class="selfcheck">${['The reader knows why I am writing after the first sentence.','Every sentence helps the reader care for this patient.','The most urgent information comes first.','No note form, no contractions, no unexplained abbreviations.','Names, dates and doses match the case notes exactly.','Paragraphs follow a logical order (purpose, background, current care, request).'].map(x=>`<label><input type="checkbox"> ${esc(x)}</label>`).join('')}</div>`;
+    mb.scrollIntoView({behavior:'smooth', block:'start'});
+  };
+  $('#clear').onclick = () => { if(confirm('Delete your letter for this case?')){ ta.value=''; store.set(draftKey,''); upd(); $('#report').innerHTML=''; $('#notes').innerHTML=notesHtml(t,null);} };
+  $('#exam').onclick = () => startExam(ta);
+}
+
+function startExam(ta){
+  clearInterval(timerHandle);
+  const tm = $('#timer'); tm.hidden=false; $('#exam').disabled = true;
+  let phase='reading', left=5*60;
+  ta.readOnly = true;
+  const fmt = s => String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  const tick = () => {
+    if(!document.body.contains(tm)){ clearInterval(timerHandle); return; }
+    left--;
+    if(left<=0){
+      if(phase==='reading'){ phase='writing'; left=40*60; ta.readOnly=false; ta.focus(); toast('Reading time is over. Start writing.'); }
+      else { clearInterval(timerHandle); ta.readOnly=true; tm.textContent='Time is up'; toast('Time is up. Press "Check my letter".'); return; }
+    }
+    tm.className = 'timer ' + (phase==='reading'?'reading':(left<300?'low':''));
+    tm.textContent = (phase==='reading'?'Reading ':'Writing ') + fmt(left);
+  };
+  tm.className='timer reading'; tm.textContent='Reading 05:00';
+  timerHandle = setInterval(tick, 1000);
+  toast('Exam mode: 5 minutes to read the notes. The editor is locked.');
+}
+
+function checker(){
+  const k='draft:free';
+  view.innerHTML = `<h1>Free OET letter checker</h1>
+  <p class="lead">Paste any OET-style nursing letter. You get instant feedback on purpose, length, formal style, layout and common language slips. For a full content check against the case notes, use one of the practice cases.</p>
+  <div class="split" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+    <div><textarea class="letter" id="letter" placeholder="Paste your full letter here: recipient, date, Dear…, Re:…, body, Yours sincerely…"></textarea>
+    <div class="toolbar"><button class="btn primary" id="check">Check my letter</button><button class="btn small" id="ex">Load an example with mistakes</button><span class="wc" id="wc"></span></div></div>
+    <div id="report"><div class="card"><h3 style="margin-top:0">What the checker looks at</h3><ul class="teach">
+      <li><b>Purpose:</b> is the reason for writing clear in the first sentence, and is there a request?</li>
+      <li><b>Conciseness:</b> body length against the 180–200 word guide; very long sentences.</li>
+      <li><b>Genre &amp; Style:</b> contractions, informal words, note form, abbreviations and symbols.</li>
+      <li><b>Organisation &amp; Layout:</b> address, date, salutation, Re: line, paragraphs, matching closing.</li>
+      <li><b>Language:</b> errors common for non-native writers, capitals, repeated words, US/UK spelling mix.</li></ul></div></div>
+  </div>${buyBox('Want the content check too?')}`;
+  const ta=$('#letter'); ta.value=store.get(k,'');
+  const upd=()=>{const s=CNL.splitLetter(ta.value);const n=(s.body.match(/[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9'’\-/.]*/g)||[]).length;$('#wc').textContent=`Body: ${n} words`;};
+  ta.oninput=()=>{store.set(k,ta.value);upd();}; upd();
+  $('#check').onclick=()=>{ $('#report').innerHTML = reportHtml(CNL.checkLetter(ta.value,null)); if(innerWidth<900) $('#report').scrollIntoView({behavior:'smooth'}); };
+  $('#ex').onclick=()=>{ ta.value = `Dr Sarah Patel\nGeneral Practitioner\nHillside Medical Centre\n\nDear Dr Sarah Patel,\n\nMrs Lopez is 68 yo and she was admitted in our ward since 5 days because of a pneumonia. She's much better now and she got better with IV abx.\n\nPt lives with her husband. She has a lot of grandchildren and she likes gardening.\n\nPlease make sure you check her chest and explain her the inhalers.\n\nKind regards,\nStaff Nurse`; store.set(k,ta.value); upd(); $('#check').click(); };
+}
+
+function phrases(){
+  view.innerHTML = `<h1>Phrase bank</h1><p class="lead">Formal phrases for each part of a nursing letter. Tap a phrase to copy it.</p>
+  <div class="grid g3 phr">${PHRASES.map(g=>`<div class="card"><h3 style="margin-top:0">${esc(g.title)}</h3><ul>${g.items.map(i=>`<li><span class="copy">${esc(i)}</span></li>`).join('')}</ul></div>`).join('')}</div>`;
+  view.querySelectorAll('.copy').forEach(el=>el.onclick=()=>{ try{navigator.clipboard.writeText(el.textContent); toast('Copied');}catch(e){} });
+}
+
+function progress(){
+  const rows = TASKS.filter(t=>!t.locked).map(t=>({t, h:store.get('hist:'+t.id,[])}));
+  const done = rows.filter(r=>r.h.length);
+  view.innerHTML = `<h1>Your progress</h1><p class="lead">Saved only on this device. ${done.length} of ${rows.length} available cases attempted.</p>
+  <div class="card" style="overflow-x:auto"><table class="prog"><tr><th>Case</th><th>Attempts</th><th>Best key notes</th><th>Last: irrelevant</th><th>Last: problems</th></tr>
+  ${rows.map(({t,h})=>{const b=h.length?h.reduce((a,c)=>(c.key||0)>(a.key||0)?c:a):null;const l=h[h.length-1];return `<tr><td><a href="#/case/${t.id}">${esc(t.title)}</a></td><td>${h.length}</td><td>${b?b.key+'%':'–'}</td><td>${l?l.irr:'–'}</td><td>${l?l.p:'–'}</td></tr>`;}).join('')}
+  </table></div>${buyBox()}`;
+}
+
+function guide(){
+  view.innerHTML = `<h1>How CaseNote Lab works</h1>
+  <div class="card" style="max-width:820px">
+  <p>In the OET Writing sub-test for nurses you read case notes and write a letter (usually a referral, discharge or transfer letter) to another health professional or a carer. Assessors use six criteria: <b>Purpose</b>, <b>Content</b>, <b>Conciseness &amp; Clarity</b>, <b>Genre &amp; Style</b>, <b>Organisation &amp; Layout</b> and <b>Language</b>. The body of the letter should be about 180–200 words.</p>
+  <h3>The note map</h3><p>Every case in CaseNote Lab was written with a map of its notes. <b>Key</b> notes are the information this reader needs to act. <b>Optional</b> notes can be included briefly. <b>Not needed</b> notes are details that the reader does not need, such as old resolved history or personal details unrelated to care. When you check your letter, the checker looks for the ideas of each note in your text (including common ways to expand them) and shows you the result on the case notes.</p>
+  <h3>What it cannot do</h3><p>The checker uses rules, not a human assessor. It may miss a note you expressed in an unusual way, and it cannot judge every grammar point or whether the tone is right for the reader. Use it to practise selection, layout and formal style, then compare with the model letter. It does not give or predict an official score.</p>
+  <h3>Privacy</h3><p>Everything runs in your browser. Your letters are saved only on your device and are never sent anywhere.</p>
+  </div>${buyBox()}`;
+}
+
+function route(){
+  clearInterval(timerHandle);
+  const h = location.hash.replace(/^#/, '') || '/';
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on', h.startsWith(a.getAttribute('href').slice(1))));
+  const m = h.match(/^\/case\/(\w+)/);
+  if (m) caseView(m[1]);
+  else if (h.startsWith('/cases')) cases();
+  else if (h.startsWith('/checker')) checker();
+  else if (h.startsWith('/phrases')) phrases();
+  else if (h.startsWith('/progress')) progress();
+  else if (h.startsWith('/guide')) guide();
+  else home();
+  window.scrollTo(0,0);
+  if (window.umami && typeof umami.track==='function') try{ umami.track('cnl-view', {path: h.split('/').slice(0,2).join('/')||'/', page: h}); }catch(e){}
+}
+addEventListener('hashchange', route);
+route();
+})();
+</script>
+</body>
+</html>
