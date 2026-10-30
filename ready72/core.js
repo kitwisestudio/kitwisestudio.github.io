@@ -8,6 +8,9 @@
     uk: { currency: '£', water: 3, days: 3, cashPerAdult: 30, emergency: '999', radio: 'BBC local radio / Radio 4 (FM or LW)' },
     ie: { currency: '€', water: 3, days: 3, cashPerAdult: 35, emergency: '112 / 999', radio: 'RTÉ Radio 1 (FM or LW 252)' },
     es: { currency: '€', water: 3, days: 3, cashPerAdult: 35, emergency: '112', radio: 'RNE Radio 1 (FM/AM)' },
+    fr: { currency: '€', water: 2, days: 3, cashPerAdult: 35, emergency: '112 / 18 / 15', radio: 'France Inter / ici (ex France Bleu) en FM' },
+    be: { currency: '€', water: 3, days: 3, cashPerAdult: 35, emergency: '112', radio: 'RTBF La Première / VRT Radio 1 (FM)' },
+    lu: { currency: '€', water: 3, days: 3, cashPerAdult: 35, emergency: '112', radio: 'RTL Radio / 100,7 (FM)' },
     eu: { currency: '€', water: 3, days: 3, cashPerAdult: 35, emergency: '112', radio: 'national public radio (FM)' }
   };
 

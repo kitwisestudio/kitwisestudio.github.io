@@ -1,7 +1,7 @@
 /* Ready72 interface. Everything stays in the browser (localStorage). */
 (function () {
   'use strict';
-  var R = window.Ready72, LANG = document.documentElement.lang === 'es' ? 'es' : 'en';
+  var R = window.Ready72, LANG = ({ es: 'es', fr: 'fr' })[document.documentElement.lang] || 'en';
   var T = window.R72_TEXT[LANG], CFG = window.R72_CONFIG || {};
   var KEY = 'ready72.v1';
   var $ = function (s, el) { return (el || document).querySelector(s); };
@@ -11,14 +11,14 @@
   function load() {
     var s = null;
     try { s = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
-    s = s || { h: { country: LANG === 'es' ? 'es' : 'uk', adults: 2, children: 0, toddlers: 0, babies: 0, dogs: 0, cats: 0, meds: false, medDevice: false }, have: {} };
+    s = s || { h: { country: ({ es: 'es', fr: 'fr' })[LANG] || 'uk', adults: 2, children: 0, toddlers: 0, babies: 0, dogs: 0, cats: 0, meds: false, medDevice: false }, have: {} };
     var fromHash = R.decode(location.hash);
     if (fromHash) { s.h = fromHash; track('shared_plan_open'); }
     return s;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   function track(name, data) { try { if (window.umami) window.umami.track(name, data || {}); } catch (e) {} }
-  function fmt(n, cur) { return LANG === 'es' ? n + ' ' + cur : cur + n; }
+  function fmt(n, cur) { return LANG !== 'en' ? n + ' ' + cur : cur + n; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
   // Form <-> state
