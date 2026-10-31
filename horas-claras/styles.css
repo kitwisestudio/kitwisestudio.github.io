@@ -91,3 +91,4 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .disclaimer{font-size:13px;color:var(--mut);border-left:3px solid var(--warn);padding:6px 10px;margin-top:12px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media print{header.top,.no-print,footer.bot,section:not(#calculadora){display:none!important}.grid-app{grid-template-columns:1fr}.card{box-shadow:none}}
+.excelcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}@media(max-width:640px){.excelcard{grid-template-columns:1fr}}

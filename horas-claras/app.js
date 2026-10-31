@@ -298,6 +298,7 @@
       var seen = false, io = new IntersectionObserver(function (en) { if (!seen && en[0].isIntersecting) { seen = true; track('pricing_view'); io.disconnect(); } }, { threshold: .4 });
       io.observe($('precios'));
     }
+    document.querySelectorAll('[data-buy]').forEach(function (a) { a.addEventListener('click', function () { track('checkout_started', { product: 'excel_2027', where: a.getAttribute('data-buy') }); }); });
     document.querySelectorAll('[data-cta]').forEach(function (a) { a.addEventListener('click', function () { track('cta_click', { where: a.getAttribute('data-cta') }); }); });
   }
 
