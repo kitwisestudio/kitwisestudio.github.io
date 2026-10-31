@@ -1,1 +1,1 @@
-window.YC_CONFIG={"buyUrl": {}};
+window.YC_CONFIG={"buyUrl": {"en": "https://www.etsy.com/listing/4606329828", "es": "https://www.etsy.com/listing/4606329828", "pt": "https://www.etsy.com/listing/4606329828", "fr": "https://www.etsy.com/listing/4606329828", "de": "https://www.etsy.com/listing/4606329828"}};

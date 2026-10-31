@@ -12,7 +12,7 @@ en: {
     again: "Start again", friendTitle: "This is {name}'s 2026", friendAnon: "Someone shared their 2026 with you",
     makeYours: "Make your own YearCard", shopTitle: "Want to go deeper?",
     shopText: "The 2026 → 2027 Reflection Workbook: 27 printable pages to close the year properly and plan the next one.",
-    shopBtn: "Get the workbook", tap: "Tap a card to download it", feed: "Feed post (4:5)",
+    shopBtn: "Get the workbook on Etsy", tap: "Tap a card to download it", feed: "Feed post (4:5)",
     shareFail: "Your browser can't share images directly, so the cards were downloaded instead."
   },
   q: {
@@ -61,7 +61,7 @@ es: {
     again: "Empezar de nuevo", friendTitle: "Este es el 2026 de {name}", friendAnon: "Alguien ha compartido su 2026 contigo",
     makeYours: "Crea tu propia YearCard", shopTitle: "¿Quieres ir más a fondo?",
     shopText: "Cuaderno de reflexión 2026 → 2027: 27 páginas imprimibles para cerrar bien el año y planear el siguiente.",
-    shopBtn: "Ver el cuaderno", tap: "Toca una tarjeta para descargarla", feed: "Post para el feed (4:5)",
+    shopBtn: "Ver el cuaderno en Etsy", tap: "Toca una tarjeta para descargarla", feed: "Post para el feed (4:5)",
     shareFail: "Tu navegador no puede compartir imágenes directamente, así que se han descargado."
   },
   q: {
@@ -110,7 +110,7 @@ pt: {
     again: "Começar de novo", friendTitle: "Esse é o 2026 de {name}", friendAnon: "Alguém compartilhou o 2026 com você",
     makeYours: "Crie o seu YearCard", shopTitle: "Quer ir mais fundo?",
     shopText: "Caderno de reflexão 2026 → 2027: 27 páginas para imprimir, fechar bem o ano e planejar o próximo.",
-    shopBtn: "Ver o caderno", tap: "Toque num card para baixar", feed: "Post para o feed (4:5)",
+    shopBtn: "Ver o caderno no Etsy", tap: "Toque num card para baixar", feed: "Post para o feed (4:5)",
     shareFail: "Seu navegador não compartilha imagens direto, então os cards foram baixados."
   },
   q: {
@@ -159,7 +159,7 @@ fr: {
     again: "Recommencer", friendTitle: "Voici le 2026 de {name}", friendAnon: "Quelqu'un a partagé son 2026 avec vous",
     makeYours: "Créer ma propre YearCard", shopTitle: "Envie d'aller plus loin ?",
     shopText: "Le cahier de bilan 2026 → 2027 : 27 pages à imprimer pour bien clore l'année et préparer la suivante.",
-    shopBtn: "Voir le cahier", tap: "Touchez une carte pour la télécharger", feed: "Post pour le feed (4:5)",
+    shopBtn: "Voir le cahier sur Etsy", tap: "Touchez une carte pour la télécharger", feed: "Post pour le feed (4:5)",
     shareFail: "Votre navigateur ne peut pas partager d'images directement, les cartes ont donc été téléchargées."
   },
   q: {
@@ -208,7 +208,7 @@ de: {
     again: "Neu starten", friendTitle: "Das ist das 2026 von {name}", friendAnon: "Jemand hat sein 2026 mit dir geteilt",
     makeYours: "Eigene YearCard erstellen", shopTitle: "Willst du tiefer gehen?",
     shopText: "Das Reflexionsheft 2026 → 2027: 27 Seiten zum Ausdrucken, um das Jahr gut abzuschließen und das nächste zu planen.",
-    shopBtn: "Zum Heft", tap: "Tippe auf eine Karte, um sie zu speichern", feed: "Feed-Post (4:5)",
+    shopBtn: "Zum Heft auf Etsy", tap: "Tippe auf eine Karte, um sie zu speichern", feed: "Feed-Post (4:5)",
     shareFail: "Dein Browser kann Bilder nicht direkt teilen, deshalb wurden die Karten heruntergeladen."
   },
   q: {
