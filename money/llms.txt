@@ -1,0 +1,12 @@
+# KitWise Money Math
+
+> Worked money examples with every number calculated and every assumption shown: debt payoff, credit card minimums, compound interest, mortgages and savings challenges. Companion to the Ready To Be Surprised YouTube channel and the KitWise printable budget trackers.
+
+## Pages
+- [Money math: real numbers for debt, interest, mortgages and savings](https://kitwisestudio.github.io/money/): Worked examples: debt snowball vs avalanche, the credit card minimum payment trap, the rule of 72, 15 vs 30 year mortgages, the 52-week challenge and the cost of waiting to invest.
+- [Debt snowball vs avalanche: we ran the numbers month by month](https://kitwisestudio.github.io/money/debt-snowball-vs-avalanche.html): On $21,000 of example debt with $730 a month, the avalanche finished in 35 months with $4,543 interest and the snowball in 36 months with $4,728. The extra payment mattered far more than the method.
+- [How long does it take to pay off $5,000 paying only the minimum?](https://kitwisestudio.github.io/money/credit-card-minimum-payment.html): At 22% APR with a minimum of interest plus 1% of the balance (at least $25), a $5,000 balance takes 230 months (about 19 years) and roughly $8,100 in interest. A fixed $200 a month takes 34 months and about $1,750.
+- [Rule of 72: how long until your money doubles (with exact math)](https://kitwisestudio.github.io/money/rule-of-72.html): Divide 72 by the yearly rate to estimate doubling time: 72 ÷ 7 = 10.3 years (exact 10.2). At 3% inflation, cash loses half its buying power in about 24 years (exact 23.4).
+- [15 vs 30 year mortgage on $400,000: payments and total interest](https://kitwisestudio.github.io/money/15-vs-30-year-mortgage.html): At 6.5%, a $400,000 30-year mortgage costs $2,528 a month and about $510,000 in interest (about $910,000 in total); a 15-year costs $3,484 a month and about $227,000 in interest.
+- [52-week savings challenge: how much you save and the Q4 trap](https://kitwisestudio.github.io/money/52-week-savings-challenge.html): Saving $1 in week 1 up to $52 in week 52 adds up to $1,378. The last quarter alone is $598, right at the holidays; doing it in reverse fixes that.
+- [What waiting one year to invest costs (and what $5 a day becomes)](https://kitwisestudio.github.io/money/cost-of-waiting-to-invest.html): $300 a month from 25 to 65 at an assumed 7% grows to about $787,000; starting at 26 gives about $731,000. Skipping $3,600 of deposits costs about $57,000.
