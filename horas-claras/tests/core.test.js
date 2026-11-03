@@ -77,3 +77,11 @@ t('ICS export', () => {
 });
 t('leap year', () => { assert.strictEqual(HC.daysInYear(2028), 366); assert.strictEqual(HC.daysInYear(2027), 365); });
 console.log(pass + ' tests passed');
+// SMS table (appended)
+const s2 = HC.defaultState(2026); s2.nightTable = 'sms2024';
+HC.applyPattern(s2, 'M M T T N N L L L L', '2026-01-01', '2026-12-31');
+const r2 = HC.compute(s2, '2026-12-31');
+assert.strictEqual(r2.nights, 73); assert.strictEqual(r2.target, HC.NIGHT_TABLES.sms2024[73]); assert.strictEqual(HC.NIGHT_TABLES.sms2024.length, 138);
+assert.strictEqual(HC.NIGHT_TABLES.sms2024[43], 1424); assert.strictEqual(HC.NIGHT_TABLES.sms2024[137], 1370);
+assert.strictEqual(HC.sanitizeState({nightTable:'evil'}).nightTable, '');
+console.log('ok - sms night table', r2.target);

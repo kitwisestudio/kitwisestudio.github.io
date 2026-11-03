@@ -40,10 +40,11 @@
     $('year').addEventListener('change', function () { state.year = +this.value; refreshDates(); renderAll(); save(); });
     $('preset').addEventListener('change', function () {
       var p = HC.PRESETS.filter(function (x) { return x.id === $('preset').value; })[0];
-      state.preset = p.id; if (p.hours) state.annualTarget = p.hours;
+      state.preset = p.id; if (p.hours) state.annualTarget = p.hours; state.nightTable = p.table || '';
+      if (p.table) { state.change.enabled = false; state.nightReduction = 0; }
       track('feature_used', { feature: 'preset', id: p.id }); syncInputs(); renderAll(); save();
     });
-    bindNum('target', function (v) { state.annualTarget = v; state.preset = 'custom'; $('preset').value = 'custom'; showPresetSrc(); }, 0, 3000);
+    bindNum('target', function (v) { state.annualTarget = v; state.preset = 'custom'; state.nightTable = ''; $('preset').value = 'custom'; $('target').disabled = false; showPresetSrc(); }, 0, 3000);
     bindNum('chgTarget', function (v) { state.change.target = v; }, 0, 3000);
     bindNum('nightRed', function (v) { state.nightReduction = v; }, 0, 12);
     bindNum('absH', function (v) { state.absenceHours = v; }, 0, 24);
@@ -60,6 +61,8 @@
   function showPresetSrc() {
     var p = HC.PRESETS.filter(function (x) { return x.id === state.preset; })[0], box = $('presetSrc');
     box.textContent = '';
+    $('target').disabled = !!(p && p.table);
+    if (p && p.table) { box.appendChild(document.createTextNode('Tu jornada sale sola de la tabla oficial según las noches que hagas en el año. ')); }
     if (p && p.src) { box.appendChild(document.createTextNode('Fuente pública: ')); var a = el('a', { href: p.src, target: '_blank', rel: 'noopener' }, 'ver documento'); box.appendChild(a); box.appendChild(document.createTextNode('. Comprueba que es tu caso.')); }
     else box.textContent = 'Escribe la jornada anual de tu acuerdo. Si no la sabes, pregunta en supervisión o en tu sindicato.';
   }
@@ -68,6 +71,7 @@
     $('chg').checked = state.change.enabled; $('chgRow').hidden = !state.change.enabled;
     $('chgDate').value = state.change.date; $('chgTarget').value = state.change.target;
     $('nightRed').value = state.nightReduction; $('absH').value = state.absenceHours; showPresetSrc();
+    $('chg').disabled = $('nightRed').disabled = !!state.nightTable;
   }
   function renderShiftRows() {
     var tb = $('shiftRows'); tb.textContent = '';
@@ -184,7 +188,8 @@
     bal.textContent = (r.balance > 0 ? '+' : '') + fmtH(r.balance);
     bal.className = 'big ' + (r.balance < -0.05 ? 'neg' : 'pos');
     $('balTxt').textContent = r.shifts === 0 ? 'Rellena tu cuadrante para ver el saldo' : (r.balance < -0.05 ? 'Debes ' + fmtH(-r.balance) + ' a final de año' : (r.balance > 0.05 ? 'Te deben ' + fmtH(r.balance) : 'Cuadra exacto'));
-    $('kTarget').textContent = fmtH(r.target) + (r.nightReduction ? ' (−' + fmtH(r.nightReduction) + ' por noches)' : '');
+    $('kTarget').textContent = fmtH(r.target) + (r.nightReduction ? ' (−' + fmtH(r.nightReduction) + ' por noches)' : '') + (r.tableTarget ? ' (' + r.nights + ' noches)' : '');
+    if (r.tableTarget) $('target').value = r.tableTarget;
     $('kWorked').textContent = fmtH(r.worked);
     $('kAbs').textContent = fmtH(r.absence);
     $('kToday').textContent = r.toDate ? ((r.toDate.balance > 0 ? '+' : '') + fmtH(r.toDate.balance)) : '—';

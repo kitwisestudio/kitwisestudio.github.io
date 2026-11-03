@@ -27,8 +27,15 @@
     { id: 'aragon-noc-2026', label: 'Aragón (Salud) 2026 · noches fijas · 1.350 h', hours: 1350,
       src: 'https://www.redaccionmedica.com/autonomias/20251226/sanidad-consolida-la-jornada-de-horas-quien-no-trabajara-por-noche/255229_0.html' },
     { id: 'ingesa-2026', label: 'INGESA 2026 · jornada general 35 h · 1.533 h', hours: 1533,
-      src: 'https://ingesa.sanidad.gob.es/ingesa/dam/jcr:bb63c5c7-6dae-49bf-a6c6-a0b1c02dcc84/report_CALENDARIO%20LABORAL%202026%20INGESA%20SSCC%20Y%20DDTT.pdf' }
+      src: 'https://ingesa.sanidad.gob.es/ingesa/dam/jcr:bb63c5c7-6dae-49bf-a6c6-a0b1c02dcc84/report_CALENDARIO%20LABORAL%202026%20INGESA%20SSCC%20Y%20DDTT.pdf' },
+    { id: 'sms-rot-2024', label: 'Murcia (SMS) desde 2024 · rotatorio · según tus noches', hours: null, table: 'sms2024', src: 'https://www.borm.es/services/anuncio/ano/2023/numero/7461/pdf?id=823869' },
+    { id: 'sms-dia-2024', label: 'Murcia (SMS) desde 2024 · diurno · 1.533 h', hours: 1533, src: 'https://www.borm.es/services/anuncio/ano/2023/numero/7461/pdf?id=823869' },
+    { id: 'sms-noc-2024', label: 'Murcia (SMS) desde 2024 · noches fijas · 1.370 h', hours: 1370, src: 'https://www.borm.es/services/anuncio/ano/2023/numero/7461/pdf?id=823869' }
   ];
+
+  // Tablas oficiales en las que la jornada del rotatorio depende de las noches hechas.
+  // SMS (Murcia): Acuerdo de jornada, BORM n.º 300 de 30-12-2023, Anexo I, en vigor desde 1-1-2024 (0 a 137 noches).
+  var NIGHT_TABLES = { sms2024: [1533, 1529, 1525, 1528, 1524, 1520, 1516, 1512, 1508, 1504, 1507, 1503, 1499, 1495, 1491, 1494, 1490, 1486, 1482, 1485, 1481, 1477, 1480, 1476, 1472, 1468, 1464, 1467, 1463, 1459, 1462, 1451, 1454, 1450, 1446, 1442, 1438, 1441, 1437, 1433, 1429, 1425, 1421, 1424, 1427, 1423, 1426, 1422, 1425, 1421, 1424, 1420, 1423, 1419, 1422, 1418, 1421, 1417, 1413, 1416, 1419, 1415, 1418, 1414, 1417, 1413, 1416, 1412, 1415, 1411, 1414, 1410, 1406, 1409, 1412, 1408, 1404, 1407, 1403, 1406, 1402, 1405, 1401, 1404, 1400, 1403, 1399, 1402, 1398, 1401, 1397, 1400, 1396, 1399, 1395, 1398, 1394, 1397, 1393, 1396, 1392, 1395, 1391, 1394, 1390, 1393, 1389, 1392, 1388, 1391, 1387, 1390, 1386, 1389, 1385, 1388, 1384, 1387, 1383, 1386, 1382, 1385, 1381, 1384, 1380, 1383, 1379, 1382, 1378, 1381, 1377, 1380, 1376, 1379, 1375, 1378, 1374, 1370] };
 
   // Festivos nacionales comunes (sin los autonómicos/locales, que el usuario puede marcar).
   var NATIONAL_HOLIDAYS = {
@@ -77,6 +84,7 @@
       change: { enabled: false, date: '', target: 1400 },
       nightReduction: 0,
       absenceHours: 7,
+      nightTable: '',
       shifts: JSON.parse(JSON.stringify(DEFAULT_SHIFTS)),
       absences: JSON.parse(JSON.stringify(DEFAULT_ABSENCES)),
       days: {},       // 'YYYY-MM-DD' -> code
@@ -93,6 +101,7 @@
     s.preset = typeof raw.preset === 'string' ? raw.preset.slice(0, 40) : 'custom';
     s.nightReduction = clampNum(raw.nightReduction, 0, 12, 0);
     s.absenceHours = clampNum(raw.absenceHours, 0, 24, 7);
+    s.nightTable = (typeof raw.nightTable === 'string' && NIGHT_TABLES[raw.nightTable]) ? raw.nightTable : '';
     if (raw.change && typeof raw.change === 'object') {
       s.change.enabled = !!raw.change.enabled;
       s.change.date = parseISO(raw.change.date) ? raw.change.date : '';
@@ -194,6 +203,17 @@
     var target = targetForRange(state, 0, n) - reduction;
     var computed = tot.worked + tot.absence;
     var targetToDate = targetForRange(state, 0, todayIdx) - toDate.nights * state.nightReduction;
+    var tableTarget = null;
+    var tbl = state.nightTable && NIGHT_TABLES[state.nightTable];
+    if (tbl) {
+      // La jornada sale de la tabla oficial según las noches del año; se reparte por días para "a hoy" y por mes.
+      tableTarget = tbl[Math.min(tot.nights, tbl.length - 1)];
+      reduction = 0; target = tableTarget; targetToDate = tableTarget * todayIdx / n;
+      for (var q = 0; q < 12; q++) {
+        var qa = dayOfYear(new Date(Date.UTC(y, q, 1))), qb = q === 11 ? n : dayOfYear(new Date(Date.UTC(y, q + 1, 1)));
+        months[q].target = tableTarget * (qb - qa) / n;
+      }
+    }
 
     // Descansos < 12 h entre el fin de un turno y el inicio del siguiente
     var restWarnings = [];
@@ -207,6 +227,7 @@
     return {
       year: y,
       target: r1(target),
+      tableTarget: tableTarget,
       nightReduction: r1(reduction),
       worked: r1(tot.worked),
       absence: r1(tot.absence),
@@ -263,7 +284,7 @@
     return lines.join('\r\n');
   }
 
-  var api = { DEFAULT_SHIFTS: DEFAULT_SHIFTS, DEFAULT_ABSENCES: DEFAULT_ABSENCES, PRESETS: PRESETS, NATIONAL_HOLIDAYS: NATIONAL_HOLIDAYS,
+  var api = { NIGHT_TABLES: NIGHT_TABLES, DEFAULT_SHIFTS: DEFAULT_SHIFTS, DEFAULT_ABSENCES: DEFAULT_ABSENCES, PRESETS: PRESETS, NATIONAL_HOLIDAYS: NATIONAL_HOLIDAYS,
     defaultState: defaultState, sanitizeState: sanitizeState, compute: compute, applyPattern: applyPattern, toICS: toICS,
     shiftHours: shiftHours, parseISO: parseISO, iso: iso, daysInYear: daysInYear, isHoliday: isHoliday, targetForRange: targetForRange };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.HC = api;
